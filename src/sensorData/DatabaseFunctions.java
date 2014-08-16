@@ -61,4 +61,20 @@ public class DatabaseFunctions {
         return false;
     }
     
+    public List<Locations> getListOfRooms()
+    {        
+        return controller.findLocationsEntities();
+    }
+    
+    public boolean addRoom(String name)
+    {
+        Locations roomData = new Locations();
+        
+        roomData.setRoomName(name);
+        
+        controller.create(roomData);
+        
+        return true;
+    }
+    
 }
