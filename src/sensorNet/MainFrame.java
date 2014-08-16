@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import sensorData.*;
+import sensorData.exceptions.IllegalOrphanException;
 
 /**
  *
@@ -28,6 +29,7 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
 
     private DatabaseFunctions database = null;
     private Location_crud locationAdminDataView = null;
+    private SensorType_crud sensorTypeAdminDataView = null;
 
     
     /**
@@ -47,6 +49,8 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        sensorTypeAdminDataView = new SensorType_crud(this, true);
+        
     }
 
     /**
@@ -65,6 +69,7 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
         jExitMenuItem = new javax.swing.JMenuItem();
         jAdminMenu = new javax.swing.JMenu();
         jRoomMenuItem = new javax.swing.JMenuItem();
+        jSensorTypesMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +115,14 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
             }
         });
         jAdminMenu.add(jRoomMenuItem);
+
+        jSensorTypesMenuItem.setText("Sensor Types");
+        jSensorTypesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSensorTypesMenuItemActionPerformed(evt);
+            }
+        });
+        jAdminMenu.add(jSensorTypesMenuItem);
 
         jMenuBar1.add(jAdminMenu);
 
@@ -229,6 +242,18 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
     }//GEN-LAST:event_jExitMenuItemActionPerformed
 
+    private void jSensorTypesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSensorTypesMenuItemActionPerformed
+        // open up a new dialog to list all the sensor types
+        // then add, delete, edit records
+        
+        refreshSensorTypeList();
+        
+        sensorTypeAdminDataView.setModalityType(Dialog.ModalityType.DOCUMENT_MODAL);
+        sensorTypeAdminDataView.setTitle("Sensor Type database");
+        sensorTypeAdminDataView.setVisible(true);
+        
+    }//GEN-LAST:event_jSensorTypesMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -270,6 +295,7 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
     private javax.swing.JMenu jFileMenu;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jRoomMenuItem;
+    private javax.swing.JMenuItem jSensorTypesMenuItem;
     private javax.swing.JPanel jStatusBar;
     private javax.swing.JLabel statusMsg;
     // End of variables declaration//GEN-END:variables
@@ -277,16 +303,118 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
     @Override
     public void locationDatabaseAction(actionRequest request) {
 
-        // open up an OptionPane window to ask for room name
+        JTable roomTable = locationAdminDataView.getTable();
         
-        String roomName = JOptionPane.showInputDialog(this, "Enter Room Name", "Enter Data", 
-                JOptionPane.QUESTION_MESSAGE);
-    
-        database.addRoom(roomName);
+        if (request == actionRequest.ADD)
+        {
+        
+            // open up an OptionPane window to ask for room name
+
+            String roomName = JOptionPane.showInputDialog(this, "Enter Room Name", "Enter Data", 
+                    JOptionPane.QUESTION_MESSAGE);
+
+            database.addRoom(roomName);
+        }
+        
+        if (request == actionRequest.DELETE)
+        {
+            // find out which row if any has been selected
+            
+            if (roomTable.getSelectedRowCount() == 0)
+            {
+                JOptionPane.showMessageDialog(this, "No Room Selected", "ERROR", 
+                        JOptionPane.ERROR_MESSAGE);
+                
+                return;
+            }
+            
+            int rowIndex = roomTable.getSelectedRow();
+            
+            String roomName = (String)roomTable.getValueAt(rowIndex, 1);
+            try {
+                database.deleteRoomRecord(roomName);
+            } catch (IllegalOrphanException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            roomTable.removeRowSelectionInterval(rowIndex, rowIndex);
+        }
+
+        if (request == actionRequest.EDIT)
+        {
+            // find out which row if any has been selected
+            
+            if (roomTable.getSelectedRowCount() == 0)
+            {
+                JOptionPane.showMessageDialog(this, "No Room Selected", "ERROR", 
+                        JOptionPane.ERROR_MESSAGE);
+                
+                return;
+            }
+            
+            int rowIndex = roomTable.getSelectedRow();
+            
+            String roomName = (String)roomTable.getValueAt(rowIndex, 1);
+            
+            String newRoomName = JOptionPane.showInputDialog(this, "Enter New Room Name", "Enter Data", 
+                    JOptionPane.QUESTION_MESSAGE);
+            
+            // check if this room name already exists
+            
+            if (database.isRoomInDatabase(newRoomName))
+            {
+                JOptionPane.showMessageDialog(this, "Room Already Exists", "WARNING", 
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            // need to see how the record can be updated
+            
+        }
         
         // refresh the room list
         
         refreshRoomList();
         
+    }
+
+    private void refreshSensorTypeList() {
+        
+        // retrieve the current room data records from the database and
+        // update the table in the dialog class
+        
+        if (database == null)
+            return;             // database has failed to open
+        
+        List<Sensortypes> sensorTypeList = database.getListOfSensorTypes();
+        JTable sensorTypeTable = sensorTypeAdminDataView.getTable();
+        DefaultTableModel table = (DefaultTableModel)sensorTypeTable.getModel();
+        
+        if (!sensorTypeList.isEmpty())
+        {
+            int rowIndex = 0;
+            
+            // add the tuples to the table for display
+            
+            for (Sensortypes sensorTypeData : sensorTypeList)
+            {
+                if (rowIndex >= table.getRowCount())
+                {
+                    table.addRow(new Object[] {0, "....", false});
+                }
+                
+                
+                sensorTypeTable.setValueAt(sensorTypeData.getIdsensorTypes(), rowIndex, 0);
+                sensorTypeTable.setValueAt(sensorTypeData.getType(), rowIndex, 1);
+                
+                if (sensorTypeData.getSensorsCollection().isEmpty())
+                    sensorTypeTable.setValueAt(false, rowIndex, 2);
+                else
+                    sensorTypeTable.setValueAt(true, rowIndex, 2);
+                
+                rowIndex++;
+                
+            }
+        }
     }
 }

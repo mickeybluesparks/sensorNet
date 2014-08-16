@@ -16,7 +16,9 @@ import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.logging.Logger;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +29,7 @@ public class DatabaseFunctions {
     private static DatabaseFunctions instance = null;
     
     private LocationsJpaController controller = null;
+    private SensortypesJpaController sensorTypeController = null;
     private EntityManager em = null;
 
     
@@ -44,6 +47,8 @@ public class DatabaseFunctions {
     {
         
         controller = LocationsJpaController.getInstance();
+        EntityManagerFactory emf = controller.getEntityManagerFactory();
+        sensorTypeController = SensortypesJpaController.getInstance(emf);
         
         return true;
     }
@@ -76,5 +81,48 @@ public class DatabaseFunctions {
         
         return true;
     }
+    
+    public void deleteRoomRecord(String name) throws IllegalOrphanException
+    {
+        Locations roomData = controller.findLocationByName(name);
+        
+        if (roomData == null)
+            return;
+        
+        if (roomData.getSensorsCollection().isEmpty())
+        {
+
+            try {
+                controller.destroy(roomData.getIdlocations());
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(DatabaseFunctions.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else
+        {
+            // cannot delete this room as there is sensor data attached to it
+            
+            JOptionPane.showMessageDialog(null, "Sensor Data attached to room. Can Not Delete", 
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
+    
+    public boolean isRoomInDatabase(String name)
+    {
+        
+        Locations roomData = controller.findLocationByName(name);
+        
+        if (roomData == null)
+            return true;
+        
+        return false;
+        
+    }
+
+    public List<Sensortypes> getListOfSensorTypes() {
+
+        return sensorTypeController.findSensortypesEntities();
+   }
     
 }

@@ -26,6 +26,16 @@ import sensorData.exceptions.PreexistingEntityException;
  */
 public class SensortypesJpaController implements Serializable {
 
+    private static SensortypesJpaController instance = null;
+    
+    public static SensortypesJpaController getInstance(EntityManagerFactory emf)
+    {
+        if (instance == null)
+            instance = new SensortypesJpaController(emf);
+        
+        return instance;
+    }
+    
     public SensortypesJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }

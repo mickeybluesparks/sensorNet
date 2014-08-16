@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import sensorData.exceptions.IllegalOrphanException;
 import sensorData.exceptions.NonexistentEntityException;
@@ -28,7 +29,7 @@ import sensorData.exceptions.NonexistentEntityException;
  */
 public class LocationsJpaController implements Serializable {
     
-    private static LocationsJpaController instance;
+    private static LocationsJpaController instance = null;
     private EntityManagerFactory emf = null;
     private EntityManager em = null;
     
@@ -60,6 +61,11 @@ public class LocationsJpaController implements Serializable {
 
     public LocationsJpaController(EntityManagerFactory emf) {
         this.emf = emf;
+    }
+    
+    public EntityManagerFactory getEntityManagerFactory()
+    {
+        return emf;
     }
     
     public EntityManager getEntityManager() {
@@ -238,6 +244,35 @@ public class LocationsJpaController implements Serializable {
         } finally {
             em.close();
         }
+    }
+    
+    public Locations findLocationByName(String name)
+    {
+        List<Locations> results = null;
+        
+        EntityManager em = getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();     // begin the transaction
+        
+        try
+        {
+            // create the query to retrieve the tuples
+
+            Query q = em.createNamedQuery("Locations.findByRoomName");
+            q.setParameter("roomName", name);
+            results = q.getResultList();
+            tx.commit();
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(LocationsJpaController.class.getName()).log(Level.SEVERE, "Exception - ", ex);
+            tx.rollback();
+        }
+        
+        if (results.isEmpty())
+            return null;
+        
+        return (Locations)results.get(0);
     }
 
     public int getLocationsCount() {

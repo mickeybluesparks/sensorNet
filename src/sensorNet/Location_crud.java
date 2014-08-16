@@ -46,6 +46,7 @@ public class Location_crud extends javax.swing.JDialog
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLocationTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLocationTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -69,7 +70,10 @@ public class Location_crud extends javax.swing.JDialog
                 return canEdit [columnIndex];
             }
         });
-        jLocationTable.setColumnSelectionAllowed(true);
+        jLocationTable.setCellSelectionEnabled(false);
+        jLocationTable.setRowSelectionAllowed(true);
+        jLocationTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jLocationTable.setShowVerticalLines(false);
         jScrollPane1.setViewportView(jLocationTable);
         jLocationTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
@@ -81,6 +85,11 @@ public class Location_crud extends javax.swing.JDialog
         });
 
         btnRemoveLocRecord.setText("Remove");
+        btnRemoveLocRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveLocRecordActionPerformed(evt);
+            }
+        });
 
         btnEditLocRecord.setText("Edit");
 
@@ -136,6 +145,10 @@ public class Location_crud extends javax.swing.JDialog
     private void btnAddLocRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLocRecordActionPerformed
         notifyListeners(LocationDataListener.actionRequest.ADD);
     }//GEN-LAST:event_btnAddLocRecordActionPerformed
+
+    private void btnRemoveLocRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveLocRecordActionPerformed
+        notifyListeners(LocationDataListener.actionRequest.DELETE);
+    }//GEN-LAST:event_btnRemoveLocRecordActionPerformed
 
     public JTable getTable()
     {
