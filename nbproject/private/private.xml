@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/NetBeansProjects/sensorNet/src/sensorData/Sensortypes.java</file>
-            <file>file:/C:/NetBeansProjects/sensorNet/src/sensorData/DatabaseFunctions.java</file>
-            <file>file:/C:/NetBeansProjects/sensorNet/src/sensorNet/SensorType_crud.java</file>
             <file>file:/C:/NetBeansProjects/sensorNet/src/sensorNet/MainFrame.java</file>
-            <file>file:/C:/NetBeansProjects/sensorNet/src/sensorData/SensortypesJpaController.java</file>
+            <file>file:/C:/NetBeansProjects/sensorNet/src/sensorComms/SensorDataHandler.java</file>
+            <file>file:/C:/NetBeansProjects/sensorNet/src/sensorComms/sensorComms.java</file>
         </group>
     </open-files>
 </project-private>

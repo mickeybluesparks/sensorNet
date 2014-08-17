@@ -6,6 +6,8 @@
 
 package sensorNet;
 
+import sensorComms.*;
+
 import java.awt.Dialog;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
@@ -30,6 +32,10 @@ public class MainFrame extends javax.swing.JFrame
     private DatabaseFunctions database = null;
     private Location_crud locationAdminDataView = null;
     private SensorType_crud sensorTypeAdminDataView = null;
+    private sensorComms sensorPort = null;
+    private SensorDataHandler dataComms = null;
+    private String[] portList;
+    private boolean sensorPortOpen = false;
 
     
     /**
@@ -60,8 +66,10 @@ public class MainFrame extends javax.swing.JFrame
         } catch (TooManyListenersException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        sensorPort = new sensorComms();
  
-    }
+   }
 
     /**
      * This method is called from within the constructor to initialise the form.
@@ -76,6 +84,8 @@ public class MainFrame extends javax.swing.JFrame
         statusMsg = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jFileMenu = new javax.swing.JMenu();
+        enableSensorMenuItem = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jExitMenuItem = new javax.swing.JMenuItem();
         jAdminMenu = new javax.swing.JMenu();
         jRoomMenuItem = new javax.swing.JMenuItem();
@@ -94,7 +104,7 @@ public class MainFrame extends javax.swing.JFrame
             jStatusBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jStatusBarLayout.createSequentialGroup()
                 .addComponent(statusMsg)
-                .addGap(0, 303, Short.MAX_VALUE))
+                .addGap(0, 464, Short.MAX_VALUE))
         );
         jStatusBarLayout.setVerticalGroup(
             jStatusBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,6 +114,15 @@ public class MainFrame extends javax.swing.JFrame
         );
 
         jFileMenu.setText("File");
+
+        enableSensorMenuItem.setText("Start Sensor Network");
+        enableSensorMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enableSensorMenuItemActionPerformed(evt);
+            }
+        });
+        jFileMenu.add(enableSensorMenuItem);
+        jFileMenu.add(jSeparator1);
 
         jExitMenuItem.setText("Exit");
         jExitMenuItem.setToolTipText("Exit the application");
@@ -142,12 +161,12 @@ public class MainFrame extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jStatusBar, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+            .addComponent(jStatusBar, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(210, Short.MAX_VALUE)
+                .addContainerGap(346, Short.MAX_VALUE)
                 .addComponent(jStatusBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -160,6 +179,11 @@ public class MainFrame extends javax.swing.JFrame
         
         if (e.getID() == WindowEvent.WINDOW_CLOSING)
         {
+            // close the port
+            
+            if (sensorPortOpen)
+                sensorPort.closePort();
+            
             // close the database
             
             if (database != null)
@@ -189,6 +213,24 @@ public class MainFrame extends javax.swing.JFrame
                         "Database Failed to Open - Please Check Server","ERROR",            
                         JOptionPane.ERROR_MESSAGE);
             }
+            
+            // now get a list of serial ports
+            
+            portList = sensorPort.listSerialPorts();
+            
+            // pop up a dialog box to select the correct port
+            
+            String portName = (String) JOptionPane.showInputDialog(this, 
+                    "Please select serial port that base station is connected to", 
+                    "Select Sensor Port", JOptionPane.QUESTION_MESSAGE, 
+                    null, portList, null);
+            
+            // now try opening the selected port
+            
+           sensorPortOpen = sensorPort.openPort(portName);
+ 
+           if (sensorPortOpen)
+               statusMsg.setText("Sensor Port Open");
         }
        
     }
@@ -264,6 +306,16 @@ public class MainFrame extends javax.swing.JFrame
         
     }//GEN-LAST:event_jSensorTypesMenuItemActionPerformed
 
+    private void enableSensorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enableSensorMenuItemActionPerformed
+        // Launch the class for handling incoming sensor data
+        
+        if (dataComms == null)
+        {
+            dataComms = new SensorDataHandler(sensorPort);
+            dataComms.enable();
+        }
+    }//GEN-LAST:event_enableSensorMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -300,12 +352,14 @@ public class MainFrame extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem enableSensorMenuItem;
     private javax.swing.JMenu jAdminMenu;
     private javax.swing.JMenuItem jExitMenuItem;
     private javax.swing.JMenu jFileMenu;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jRoomMenuItem;
     private javax.swing.JMenuItem jSensorTypesMenuItem;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPanel jStatusBar;
     private javax.swing.JLabel statusMsg;
     // End of variables declaration//GEN-END:variables

@@ -9,6 +9,16 @@
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="enableSensorMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Start Sensor Network"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enableSensorMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jExitMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Exit"/>
@@ -69,13 +79,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jStatusBar" alignment="0" pref="312" max="32767" attributes="0"/>
+          <Component id="jStatusBar" alignment="0" pref="473" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="210" max="32767" attributes="0"/>
+              <EmptySpace pref="346" max="32767" attributes="0"/>
               <Component id="jStatusBar" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -99,7 +109,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="statusMsg" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="303" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="464" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
