@@ -7,18 +7,16 @@
 package sensorData;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,23 +28,33 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Sensortypes.findAll", query = "SELECT s FROM Sensortypes s"),
     @NamedQuery(name = "Sensortypes.findByIdsensorTypes", query = "SELECT s FROM Sensortypes s WHERE s.idsensorTypes = :idsensorTypes"),
-    @NamedQuery(name = "Sensortypes.findByType", query = "SELECT s FROM Sensortypes s WHERE s.type = :type")})
+    @NamedQuery(name = "Sensortypes.findByType", query = "SELECT s FROM Sensortypes s WHERE s.type = :type"),
+    @NamedQuery(name = "Sensortypes.findByPrefix", query = "SELECT s FROM Sensortypes s WHERE s.prefix = :prefix")})
 public class Sensortypes implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idsensorTypes")
     private Integer idsensorTypes;
+    @Basic(optional = false)
     @Column(name = "type")
     private String type;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sensorTypesidsensorTypes")
-    private Collection<Sensors> sensorsCollection;
+    @Basic(optional = false)
+    @Column(name = "prefix")
+    private String prefix;
 
     public Sensortypes() {
     }
 
     public Sensortypes(Integer idsensorTypes) {
         this.idsensorTypes = idsensorTypes;
+    }
+
+    public Sensortypes(Integer idsensorTypes, String type, String prefix) {
+        this.idsensorTypes = idsensorTypes;
+        this.type = type;
+        this.prefix = prefix;
     }
 
     public Integer getIdsensorTypes() {
@@ -65,13 +73,12 @@ public class Sensortypes implements Serializable {
         this.type = type;
     }
 
-    @XmlTransient
-    public Collection<Sensors> getSensorsCollection() {
-        return sensorsCollection;
+    public String getPrefix() {
+        return prefix;
     }
 
-    public void setSensorsCollection(Collection<Sensors> sensorsCollection) {
-        this.sensorsCollection = sensorsCollection;
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
     }
 
     @Override

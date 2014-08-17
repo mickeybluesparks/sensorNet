@@ -79,7 +79,7 @@
               <Table columnCount="3" rowCount="0">
                 <Column editable="false" title="Record ID" type="java.lang.Integer"/>
                 <Column editable="false" title="Type" type="java.lang.String"/>
-                <Column editable="false" title="Sensor Records" type="java.lang.Boolean"/>
+                <Column editable="false" title="Prefix" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
@@ -92,11 +92,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Add"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnRemove">
       <Properties>
         <Property name="text" type="java.lang.String" value="Remove"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoveActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEdit">
       <Properties>

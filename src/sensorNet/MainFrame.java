@@ -8,8 +8,6 @@ package sensorNet;
 
 import java.awt.Dialog;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.TooManyListenersException;
@@ -20,12 +18,14 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import sensorData.*;
 import sensorData.exceptions.IllegalOrphanException;
+import sensorData.exceptions.NonexistentEntityException;
 
 /**
  *
  * @author Mike
  */
-public class MainFrame extends javax.swing.JFrame implements LocationDataListener {
+public class MainFrame extends javax.swing.JFrame 
+    implements LocationDataListener, SensorTypeDataListener {
 
     private DatabaseFunctions database = null;
     private Location_crud locationAdminDataView = null;
@@ -34,6 +34,7 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
     
     /**
      * Creates new form MainFrame
+     * @throws java.util.TooManyListenersException
      */
     public MainFrame() {
         initComponents();
@@ -42,7 +43,7 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
         locationAdminDataView = new Location_crud(this, true);
 
         try {
-            // add the action event listner
+            // add the action event listener
             
             locationAdminDataView.addRequestListener(this);
         } catch (TooManyListenersException ex) {
@@ -51,6 +52,15 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
         
         sensorTypeAdminDataView = new SensorType_crud(this, true);
         
+        try {
+            
+            // add the action event listener
+
+            sensorTypeAdminDataView.addRequestListener(this);
+        } catch (TooManyListenersException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
     }
 
     /**
@@ -301,11 +311,11 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void locationDatabaseAction(actionRequest request) {
+    public void locationDatabaseAction(LocationDataListener.actionRequest request) {
 
         JTable roomTable = locationAdminDataView.getTable();
         
-        if (request == actionRequest.ADD)
+        if (request == LocationDataListener.actionRequest.ADD)
         {
         
             // open up an OptionPane window to ask for room name
@@ -316,7 +326,7 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
             database.addRoom(roomName);
         }
         
-        if (request == actionRequest.DELETE)
+        if (request == LocationDataListener.actionRequest.DELETE)
         {
             // find out which row if any has been selected
             
@@ -340,7 +350,7 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
             roomTable.removeRowSelectionInterval(rowIndex, rowIndex);
         }
 
-        if (request == actionRequest.EDIT)
+        if (request == LocationDataListener.actionRequest.EDIT)
         {
             // find out which row if any has been selected
             
@@ -380,7 +390,7 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
 
     private void refreshSensorTypeList() {
         
-        // retrieve the current room data records from the database and
+        // retrieve the current sensor type data records from the database and
         // update the table in the dialog class
         
         if (database == null)
@@ -400,21 +410,77 @@ public class MainFrame extends javax.swing.JFrame implements LocationDataListene
             {
                 if (rowIndex >= table.getRowCount())
                 {
-                    table.addRow(new Object[] {0, "....", false});
+                    table.addRow(new Object[] {0, "....", "."});
                 }
                 
                 
                 sensorTypeTable.setValueAt(sensorTypeData.getIdsensorTypes(), rowIndex, 0);
                 sensorTypeTable.setValueAt(sensorTypeData.getType(), rowIndex, 1);
-                
-                if (sensorTypeData.getSensorsCollection().isEmpty())
-                    sensorTypeTable.setValueAt(false, rowIndex, 2);
-                else
-                    sensorTypeTable.setValueAt(true, rowIndex, 2);
+                sensorTypeTable.setValueAt(sensorTypeData.getPrefix(), rowIndex, 2);
                 
                 rowIndex++;
                 
             }
         }
+    }
+
+    @Override
+    public void SensorTypeDatabaseAction(SensorTypeDataListener.actionRequest request) {
+        
+        JTable sensorTable = sensorTypeAdminDataView.getTable();
+        
+        if (request == SensorTypeDataListener.actionRequest.ADD)
+        {
+            // get the data for the sensor type
+            
+            String sensorType;
+            String networkPrefix;
+            
+            sensorTypeDataEntry dataEntry = new sensorTypeDataEntry(this, true);
+            dataEntry.setVisible(true);
+            
+            // get Data from dialog
+            
+            sensorType = dataEntry.getSensorType();
+            networkPrefix = dataEntry.getNetworkPrefix();
+            
+            if (dataEntry.getResult() == sensorTypeDataEntry.OK_SELECTED)
+            {
+                try {
+                     database.addSensorType(sensorType, networkPrefix);
+                 } catch (Exception ex) {
+                     Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+            }
+            
+            dataEntry.dispose();        // delete the dialog box now
+                   
+        }
+        
+        if (request == SensorTypeDataListener.actionRequest.DELETE)
+        {
+            // find out which row if any has been selected
+            
+            if (sensorTable.getSelectedRowCount() == 0)
+            {
+                JOptionPane.showMessageDialog(this, "No Sensor Selected", "ERROR", 
+                        JOptionPane.ERROR_MESSAGE);
+                
+                return;
+            }
+            
+            int rowIndex = sensorTable.getSelectedRow();
+            
+            String sensorType = (String)sensorTable.getValueAt(rowIndex, 1);
+            try {
+                database.deleteSensorTypeRecord(sensorType);
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            sensorTable.removeRowSelectionInterval(rowIndex, rowIndex);
+        }
+        
+        refreshSensorTypeList();
     }
 }

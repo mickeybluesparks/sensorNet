@@ -82,6 +82,18 @@ public class DatabaseFunctions {
         return true;
     }
     
+    public boolean addSensorType(String sensorType, String prefix) throws Exception
+    {
+        Sensortypes sensorTypeData = new Sensortypes();
+        
+        sensorTypeData.setType(sensorType);
+        sensorTypeData.setPrefix(prefix);
+        
+        sensorTypeController.create(sensorTypeData);
+        
+        return true;
+    }
+    
     public void deleteRoomRecord(String name) throws IllegalOrphanException
     {
         Locations roomData = controller.findLocationByName(name);
@@ -124,5 +136,15 @@ public class DatabaseFunctions {
 
         return sensorTypeController.findSensortypesEntities();
    }
+
+    public void deleteSensorTypeRecord(String sensorType) throws NonexistentEntityException {
+   
+        Sensortypes sensorTypeData = sensorTypeController.findSensorByType(sensorType);
+        
+        if (sensorTypeData == null)
+            return;
+        
+        sensorTypeController.destroy(sensorTypeData.getIdsensorTypes());
+    }
     
 }

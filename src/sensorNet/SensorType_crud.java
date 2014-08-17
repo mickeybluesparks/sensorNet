@@ -6,6 +6,7 @@
 
 package sensorNet;
 
+import java.util.TooManyListenersException;
 import javax.swing.JTable;
 
 /**
@@ -14,11 +15,14 @@ import javax.swing.JTable;
  */
 public class SensorType_crud extends javax.swing.JDialog {
 
+    private SensorTypeDataListener m_requestListener;
+    
     /**
      * Creates new form SensorType_crud
      */
     public SensorType_crud(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.m_requestListener = null;
         initComponents();
     }
 
@@ -46,11 +50,11 @@ public class SensorType_crud extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Record ID", "Type", "Sensor Records"
+                "Record ID", "Type", "Prefix"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -69,8 +73,18 @@ public class SensorType_crud extends javax.swing.JDialog {
         jScrollPane1.setViewportView(sensorTypeTable);
 
         btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnRemove.setText("Remove");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
 
         btnEdit.setText("Edit");
 
@@ -112,6 +126,14 @@ public class SensorType_crud extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        notifyListeners(SensorTypeDataListener.actionRequest.ADD);
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        notifyListeners(SensorTypeDataListener.actionRequest.DELETE);
+    }//GEN-LAST:event_btnRemoveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,4 +190,28 @@ public class SensorType_crud extends javax.swing.JDialog {
     
         return sensorTypeTable;
     }
+    
+    public void addRequestListener(SensorTypeDataListener listener) throws TooManyListenersException
+    {
+        if (listener == null)
+            throw new IllegalArgumentException("listener cannot be null");
+        
+        if (m_requestListener != null)       
+            throw new TooManyListenersException();
+        
+        m_requestListener = listener;       
+    }
+    
+    public void removeRequestListener(SensorTypeDataListener listener)
+    {
+        m_requestListener = null;
+    }
+    
+    private void notifyListeners(SensorTypeDataListener.actionRequest request)
+    {
+        if (m_requestListener != null)
+            m_requestListener.SensorTypeDatabaseAction(request);
+    }
+    
+    
 }

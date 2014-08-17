@@ -6,6 +6,8 @@
 
 package sensorNet;
 
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.util.TooManyListenersException;
 import javax.swing.JTable;
 
@@ -16,13 +18,14 @@ import javax.swing.JTable;
 public class Location_crud extends javax.swing.JDialog
 {
 
-    private LocationDataListener m_requestListener = null;
+    private LocationDataListener m_requestListener;
     
     /**
      * Creates new form Location_crud
      */
     public Location_crud(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.m_requestListener = null;
         initComponents();
                 
         
@@ -139,7 +142,9 @@ public class Location_crud extends javax.swing.JDialog
     }// </editor-fold>//GEN-END:initComponents
 
     private void jExitLocDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExitLocDialogActionPerformed
-        // TODO add your handling code here:
+        WindowEvent closingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
+
     }//GEN-LAST:event_jExitLocDialogActionPerformed
 
     private void btnAddLocRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLocRecordActionPerformed
