@@ -7,6 +7,7 @@
 package LLAP;
 
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -33,238 +34,85 @@ public class LLAPMessageParserTest {
      */
     @Test
     public void testParseMessage() {
-        System.out.println("parseMessage");
-        byte[] msg = null;
+        System.out.println("parseMessage -  current LLAP Message format");
+        String msg = "a--STARTED--";
         LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.parseMessage(msg);
+        boolean expResult = true;
+        boolean result = instance.parseMessage(msg.getBytes());
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of receivedStartMsg method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testReceivedStartMsg() {
-        System.out.println("receivedStartMsg");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.receivedStartMsg();
+        
+        // no go tests
+        
+        System.out.println("parseMessage - not a LLAP Message - missing a");
+        msg = "b--STARTED--";
+        expResult = false;
+        result = instance.parseMessage(msg.getBytes());
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of getDeviceID method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testGetDeviceID() {
-        System.out.println("getDeviceID");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        byte[] expResult = null;
-        byte[] result = instance.getDeviceID();
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of receivedVersionNumber method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testReceivedVersionNumber() {
-        System.out.println("receivedVersionNumber");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.receivedVersionNumber();
+        System.out.println("parseMessage - not a LLAP Message - wrong length (short)");
+        msg = "a--STARTED-";
+        expResult = false;
+        result = instance.parseMessage(msg.getBytes());
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of receivedTemperature method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testReceivedTemperature() {
-        System.out.println("receivedTemperature");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.receivedTemperature();
+        System.out.println("parseMessage - not a LLAP Message - wrong length (long)");
+        msg = "a--STARTED---";
+        expResult = false;
+        result = instance.parseMessage(msg.getBytes());
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of getMessageValue method, of class LLAPMessageParser.
+     /**
+     * Test of parseMessage method, - Device ID Check.
      */
     @Test
-    public void testGetMessageValue() {
-        System.out.println("getMessageValue");
+    public void testDeviceID()
+    {
+        System.out.println("parseMessage -  checking Device ID extracted");
+        String msg = "a--STARTED--";
         LLAPMessageParser instance = new LLAPMessageParser();
-        double expResult = 0.0;
-        double result = instance.getMessageValue();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getMessageText method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testGetMessageText() {
-        System.out.println("getMessageText");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        String expResult = "";
-        String result = instance.getMessageText();
+        boolean expResult = true;
+        boolean result = instance.parseMessage(msg.getBytes());
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        System.out.println("Default ID extraction");
+        String expectedID = "--";
+        Assert.assertArrayEquals(expectedID.getBytes(), instance.getDeviceID());
+        
+        msg = "aTZSTARTED--";
+        result = instance.parseMessage(msg.getBytes());
+        assertEquals(expResult, result);
+        System.out.println("ID = 'TZ' extraction");
+        expectedID = "TZ";
+        Assert.assertArrayEquals(expectedID.getBytes(), instance.getDeviceID());      
     }
-
-    /**
-     * Test of deviceAwaken method, of class LLAPMessageParser.
+    
+     /**
+     * Test of parseMessage method, - check for battery low message.
      */
     @Test
-    public void testDeviceAwaken() {
-        System.out.println("deviceAwaken");
+    public void testBatteryLowMessage()
+    {
+        System.out.println("parseMessage -  battery low message received");
+        String msg = "a--BATTLOW--";
         LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.deviceAwaken();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of batteryLow method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testBatteryLow() {
-        System.out.println("batteryLow");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.batteryLow();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of receivedBatteryLevel method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testReceivedBatteryLevel() {
-        System.out.println("receivedBatteryLevel");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.receivedBatteryLevel();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of confirmDeviceIDChange method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testConfirmDeviceIDChange() {
-        System.out.println("confirmDeviceIDChange");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.confirmDeviceIDChange();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of receivedErrorCode method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testReceivedErrorCode() {
-        System.out.println("receivedErrorCode");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.receivedErrorCode();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of receivedFirmwareVersion method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testReceivedFirmwareVersion() {
-        System.out.println("receivedFirmwareVersion");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.receivedFirmwareVersion();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of receivedHelloMsg method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testReceivedHelloMsg() {
-        System.out.println("receivedHelloMsg");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.receivedHelloMsg();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of isRebootConfirmed method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testIsRebootConfirmed() {
-        System.out.println("isRebootConfirmed");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.isRebootConfirmed();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of receivedSerialNumber method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testReceivedSerialNumber() {
-        System.out.println("receivedSerialNumber");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.receivedSerialNumber();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of deviceGoingToSleep method, of class LLAPMessageParser.
-     */
-    @Test
-    public void testDeviceGoingToSleep() {
-        System.out.println("deviceGoingToSleep");
-        LLAPMessageParser instance = new LLAPMessageParser();
-        boolean expResult = false;
-        boolean result = instance.deviceGoingToSleep();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult = true;
+        boolean result = instance.parseMessage(msg.getBytes());
+        assertEquals(expResult, result);    // parsed ok
+        System.out.println("Parsed OK");       
+        assertEquals(expResult, instance.batteryLow());
+        
+        System.out.println("Misspelt message");
+        msg = "a--BATTTOW--";
+        expResult = false;      // fails to parse a correct LLAP Message
+        result = instance.parseMessage(msg.getBytes());
+        assertEquals(expResult, result);    // parsed fail
+        
+        expResult = false;
+        assertEquals(expResult, instance.batteryLow());        
+        System.out.println("Check fail on Battery Low Value Message");
+        assertEquals(expResult, instance.receivedBatteryLevel());
     }
     
 }

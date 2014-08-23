@@ -102,112 +102,173 @@ public class LLAPMessageParser {
         {
             case 'A' :      // either APVER or AWAKE
             {
-                if (m_messageBody.charAt(1) == 'P')
+                if (m_messageBody.startsWith("APVER"))
                 {
                     // Recieved version number from device
+                    // check that the message value is indeed a number
+
+                    if (Character.isDigit(m_messageBody.charAt(5)))
+                    {
                     
-                    m_version = true;
+                        m_version = true;
+                        m_parseOk = true;
+
+                        // now extract the version number
+
+                        m_messageValue = Double.valueOf(m_messageBody.substring(5));
+                    }
                     
-                    // now extract the version number
-                    
-                    m_messageValue = Double.valueOf(m_messageBody.substring(5));
-                    m_parseOk = true;
                     break;                   
                 }
                 
-                // Device has just woken up
+                if (m_messageBody.equals("AWAKE"))
+                {
                 
-                m_awake = true;
-                m_parseOk = true;
+                    // Device has just woken up
+
+                    m_awake = true;
+                    m_parseOk = true;
+                }
                 break;
             }
             
             case 'B' :      // either BATT or BATTLOW
             {
-                if (m_messageBody.charAt(4) == 'L')
+                if (m_messageBody.equals("BATTLOW"))
                 {
                     m_batteryLow = true;
                     m_parseOk = true;
                     break;
                 }
+                
+                if (m_messageBody.startsWith("BATT"))
+                {
+                    // check that the message value is indeed a number
 
-                m_batteryValue = true;
-              
-                // extract the battery value
-              
-                m_messageValue = Double.valueOf(m_messageBody.substring(5));
-                m_parseOk = true;
+                    if (Character.isDigit(m_messageBody.charAt(5)))
+                    {
+                        m_batteryValue = true;
+                        m_parseOk = true;
+
+                        // extract the battery value
+
+                        m_messageValue = Double.valueOf(m_messageBody.substring(5));
+                   }
+                }
+                    
                 break;                                   
             }
             
             case 'C' :      // CHDEVIDxx - reponse to confirm change
             {
-                m_idChanged = true;
+                if (m_messageBody.startsWith("CHDEVID"))
+                {
                 
-                m_messageString = new String(m_messageBody.substring(7));
-                m_parseOk = true;
+                    m_idChanged = true;
+
+                    m_messageString = new String(m_messageBody.substring(7));
+                    m_parseOk = true;
+                }
+                
                 break;
             }
             
             case 'E' :      // ERRORnnnn - four character error code
             {
-                m_errorCode = true;
-                m_messageString = new String(m_messageBody.substring(5));
-                m_parseOk = true;
+                if (m_messageBody.startsWith("ERROR"))
+                {
+                    m_errorCode = true;
+                    m_messageString = new String(m_messageBody.substring(5));
+                    m_parseOk = true;
+                }
+                
                 break;
             }
             
             case 'F' :      // FVER
             {
-                m_firmwareVersion = true;
-                m_messageValue = Double.valueOf(m_messageBody.substring(4));
-                m_parseOk = true;
+             
+                if (m_messageBody.startsWith("FVER"))
+                {
+                    if (Character.isDigit(m_messageBody.charAt(4)))
+                    {               
+                        m_firmwareVersion = true;
+                        m_messageValue = Double.valueOf(m_messageBody.substring(4));
+                        m_parseOk = true;
+                    }
+                }
+                
                 break;
             }
             
             case 'H' :      // HELLO
             {
-                m_hello = true;
-                m_parseOk = true;
+                
+                if (m_messageBody.equals("HELLO"))
+                {
+                    m_hello = true;
+                    m_parseOk = true;
+                }
                 break;
             }
             
             case 'R' :      // REBOOT Confirmed
             {
-                m_reboot = true;
-                m_parseOk = true;
+                if (m_messageBody.equals("REBOOT"))
+                {
+                    m_reboot = true;
+                    m_parseOk = true;
+                }
                 break;
             }
             
             case 'S' :      // SER or SLEEPING or STARTED
             {
-                if (m_messageBody.charAt(1) == 'E')
+                if (m_messageBody.startsWith("SER"))
                 {
-                    m_serialNum = true;
-                    m_messageValue = Double.valueOf(m_messageBody.substring(3));
-                    m_parseOk = true;
+                    if (Character.isDigit(m_messageBody.charAt(3)))
+                    {
+                    
+                        m_serialNum = true;
+                        m_messageValue = Double.valueOf(m_messageBody.substring(3));
+                        m_parseOk = true;
+                    }
                     break;
                 }
                 
-                if (m_messageBody.charAt(1) == 'L')
+                if (m_messageBody.equals("SLEEPING"))
                 {
                     m_sleeping = true;
                     m_parseOk = true;
                     break;
                 }
                 
-                // Must be started
+                if (m_messageBody.equals("STARTED"))
+                {
                 
-                m_started = true;
-                m_parseOk = true;
+                    // Must be started
+
+                    m_started = true;
+                    m_parseOk = true;
+                }
+                    
                 break;
             }
             
             case 'T' :          // TEMP or TMPA
             {
-                m_temperature = true;
-                m_messageValue = Double.valueOf(m_messageBody.substring(4));
-                m_parseOk = true;
+                if ((m_messageBody.startsWith("TEMP")) ||
+                        (m_messageBody.startsWith("TMPA")))
+                {
+
+                    if (Character.isDigit(m_messageBody.charAt(4)))
+                    {
+                        m_temperature = true;
+                        m_messageValue = Double.valueOf(m_messageBody.substring(4));
+                        m_parseOk = true;
+                    }
+                }
+                
                 break;
             }
  
