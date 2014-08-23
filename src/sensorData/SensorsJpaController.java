@@ -55,6 +55,11 @@ public class SensorsJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Sensortypes sensorTypesidsensorTypes = sensors.getSensorTypesidsensorTypes();
+            if (sensorTypesidsensorTypes != null) {
+                sensorTypesidsensorTypes = em.getReference(sensorTypesidsensorTypes.getClass(), sensorTypesidsensorTypes.getIdsensorTypes());
+                sensors.setSensorTypesidsensorTypes(sensorTypesidsensorTypes);
+            }
             Locations locationsIdlocations = sensors.getLocationsIdlocations();
             if (locationsIdlocations != null) {
                 locationsIdlocations = em.getReference(locationsIdlocations.getClass(), locationsIdlocations.getIdlocations());
@@ -67,6 +72,10 @@ public class SensorsJpaController implements Serializable {
             }
             sensors.setSensorDataCollection(attachedSensorDataCollection);
             em.persist(sensors);
+            if (sensorTypesidsensorTypes != null) {
+                sensorTypesidsensorTypes.getSensorsCollection().add(sensors);
+                sensorTypesidsensorTypes = em.merge(sensorTypesidsensorTypes);
+            }
             if (locationsIdlocations != null) {
                 locationsIdlocations.getSensorsCollection().add(sensors);
                 locationsIdlocations = em.merge(locationsIdlocations);
@@ -94,6 +103,8 @@ public class SensorsJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Sensors persistentSensors = em.find(Sensors.class, sensors.getIdsensors());
+            Sensortypes sensorTypesidsensorTypesOld = persistentSensors.getSensorTypesidsensorTypes();
+            Sensortypes sensorTypesidsensorTypesNew = sensors.getSensorTypesidsensorTypes();
             Locations locationsIdlocationsOld = persistentSensors.getLocationsIdlocations();
             Locations locationsIdlocationsNew = sensors.getLocationsIdlocations();
             Collection<SensorData> sensorDataCollectionOld = persistentSensors.getSensorDataCollection();
@@ -110,6 +121,10 @@ public class SensorsJpaController implements Serializable {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
+            if (sensorTypesidsensorTypesNew != null) {
+                sensorTypesidsensorTypesNew = em.getReference(sensorTypesidsensorTypesNew.getClass(), sensorTypesidsensorTypesNew.getIdsensorTypes());
+                sensors.setSensorTypesidsensorTypes(sensorTypesidsensorTypesNew);
+            }
             if (locationsIdlocationsNew != null) {
                 locationsIdlocationsNew = em.getReference(locationsIdlocationsNew.getClass(), locationsIdlocationsNew.getIdlocations());
                 sensors.setLocationsIdlocations(locationsIdlocationsNew);
@@ -122,6 +137,14 @@ public class SensorsJpaController implements Serializable {
             sensorDataCollectionNew = attachedSensorDataCollectionNew;
             sensors.setSensorDataCollection(sensorDataCollectionNew);
             sensors = em.merge(sensors);
+            if (sensorTypesidsensorTypesOld != null && !sensorTypesidsensorTypesOld.equals(sensorTypesidsensorTypesNew)) {
+                sensorTypesidsensorTypesOld.getSensorsCollection().remove(sensors);
+                sensorTypesidsensorTypesOld = em.merge(sensorTypesidsensorTypesOld);
+            }
+            if (sensorTypesidsensorTypesNew != null && !sensorTypesidsensorTypesNew.equals(sensorTypesidsensorTypesOld)) {
+                sensorTypesidsensorTypesNew.getSensorsCollection().add(sensors);
+                sensorTypesidsensorTypesNew = em.merge(sensorTypesidsensorTypesNew);
+            }
             if (locationsIdlocationsOld != null && !locationsIdlocationsOld.equals(locationsIdlocationsNew)) {
                 locationsIdlocationsOld.getSensorsCollection().remove(sensors);
                 locationsIdlocationsOld = em.merge(locationsIdlocationsOld);
@@ -180,6 +203,11 @@ public class SensorsJpaController implements Serializable {
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
+            }
+            Sensortypes sensorTypesidsensorTypes = sensors.getSensorTypesidsensorTypes();
+            if (sensorTypesidsensorTypes != null) {
+                sensorTypesidsensorTypes.getSensorsCollection().remove(sensors);
+                sensorTypesidsensorTypes = em.merge(sensorTypesidsensorTypes);
             }
             Locations locationsIdlocations = sensors.getLocationsIdlocations();
             if (locationsIdlocations != null) {

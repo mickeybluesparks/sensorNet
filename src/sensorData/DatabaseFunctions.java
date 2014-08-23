@@ -6,18 +6,14 @@
 
 package sensorData;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import sensorData.exceptions.*;
 import java.util.List;
 import java.util.logging.Level;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.swing.JOptionPane;
 
 /**
@@ -89,7 +85,7 @@ public class DatabaseFunctions {
         Sensortypes sensorTypeData = new Sensortypes();
         
         sensorTypeData.setType(sensorType);
-        sensorTypeData.setPrefix(prefix);
+        sensorTypeData.setNetworkprefix(prefix);
         
         sensorTypeController.create(sensorTypeData);
         
@@ -145,8 +141,11 @@ public class DatabaseFunctions {
         
         if (sensorTypeData == null)
             return;
-        
-        sensorTypeController.destroy(sensorTypeData.getIdsensorTypes());
+        try {
+            sensorTypeController.destroy(sensorTypeData.getIdsensorTypes());
+        } catch (IllegalOrphanException ex) {
+            Logger.getLogger(DatabaseFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public String addNewSensor(String type, String roomName)
@@ -157,13 +156,13 @@ public class DatabaseFunctions {
         
         Sensortypes sensorTypeRecord = sensorTypeController.findSensorByType(type);
         
-        String networkID = sensorTypeRecord.getPrefix();
+        String networkID = sensorTypeRecord.getNetworkprefix();
         
         if (sensorController.getSensorsCount() > 0)
         {
             String lastNetworkID = sensorController.findLastNetwordID(networkID);
-            
-            networkID += (lastNetworkID.charAt(1) + 1);
+                       
+            networkID += (char)(lastNetworkID.charAt(1) + 1);
             
         }
         else
@@ -174,6 +173,45 @@ public class DatabaseFunctions {
         sensor.setSensorTypesidsensorTypes(sensorTypeRecord);
         
         sensorController.create(sensor);
+        
+        // modify the appropiate location record to link to this sensor
+        
+        Locations roomRecord = controller.findLocationByName(roomName);
+        Collection<Sensors> sensorList = roomRecord.getSensorsCollection();
+        
+        if (sensorList == null)
+        {
+            sensorList = new ArrayList<Sensors>();
+            roomRecord.setSensorsCollection(sensorList);
+        }
+        
+        sensorList.add(sensor);
+        try {
+            controller.edit(roomRecord);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(DatabaseFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DatabaseFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        // now modify the appropiate sensor type record to link to this sensor
+        
+        sensorList = sensorTypeRecord.getSensorsCollection();
+        
+        if (sensorList == null)
+        {
+            sensorList = new ArrayList<Sensors>();
+            sensorTypeRecord.setSensorsCollection(sensorList);
+        }
+        
+        sensorList.add(sensor);
+        try {
+            sensorTypeController.edit(sensorTypeRecord);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(DatabaseFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DatabaseFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         return networkID;
     }

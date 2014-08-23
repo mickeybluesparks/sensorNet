@@ -7,6 +7,8 @@
 package sensorData;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +19,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import sensorData.exceptions.IllegalOrphanException;
 import sensorData.exceptions.NonexistentEntityException;
 
 /**
@@ -45,11 +48,29 @@ public class SensortypesJpaController implements Serializable {
     }
 
     public void create(Sensortypes sensortypes) {
+        if (sensortypes.getSensorsCollection() == null) {
+            sensortypes.setSensorsCollection(new ArrayList<Sensors>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Collection<Sensors> attachedSensorsCollection = new ArrayList<Sensors>();
+            for (Sensors sensorsCollectionSensorsToAttach : sensortypes.getSensorsCollection()) {
+                sensorsCollectionSensorsToAttach = em.getReference(sensorsCollectionSensorsToAttach.getClass(), sensorsCollectionSensorsToAttach.getIdsensors());
+                attachedSensorsCollection.add(sensorsCollectionSensorsToAttach);
+            }
+            sensortypes.setSensorsCollection(attachedSensorsCollection);
             em.persist(sensortypes);
+            for (Sensors sensorsCollectionSensors : sensortypes.getSensorsCollection()) {
+                Sensortypes oldSensorTypesidsensorTypesOfSensorsCollectionSensors = sensorsCollectionSensors.getSensorTypesidsensorTypes();
+                sensorsCollectionSensors.setSensorTypesidsensorTypes(sensortypes);
+                sensorsCollectionSensors = em.merge(sensorsCollectionSensors);
+                if (oldSensorTypesidsensorTypesOfSensorsCollectionSensors != null) {
+                    oldSensorTypesidsensorTypesOfSensorsCollectionSensors.getSensorsCollection().remove(sensorsCollectionSensors);
+                    oldSensorTypesidsensorTypesOfSensorsCollectionSensors = em.merge(oldSensorTypesidsensorTypesOfSensorsCollectionSensors);
+                }
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -58,12 +79,45 @@ public class SensortypesJpaController implements Serializable {
         }
     }
 
-    public void edit(Sensortypes sensortypes) throws NonexistentEntityException, Exception {
+    public void edit(Sensortypes sensortypes) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Sensortypes persistentSensortypes = em.find(Sensortypes.class, sensortypes.getIdsensorTypes());
+            Collection<Sensors> sensorsCollectionOld = persistentSensortypes.getSensorsCollection();
+            Collection<Sensors> sensorsCollectionNew = sensortypes.getSensorsCollection();
+            List<String> illegalOrphanMessages = null;
+            for (Sensors sensorsCollectionOldSensors : sensorsCollectionOld) {
+                if (!sensorsCollectionNew.contains(sensorsCollectionOldSensors)) {
+                    if (illegalOrphanMessages == null) {
+                        illegalOrphanMessages = new ArrayList<String>();
+                    }
+                    illegalOrphanMessages.add("You must retain Sensors " + sensorsCollectionOldSensors + " since its sensorTypesidsensorTypes field is not nullable.");
+                }
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
+            }
+            Collection<Sensors> attachedSensorsCollectionNew = new ArrayList<Sensors>();
+            for (Sensors sensorsCollectionNewSensorsToAttach : sensorsCollectionNew) {
+                sensorsCollectionNewSensorsToAttach = em.getReference(sensorsCollectionNewSensorsToAttach.getClass(), sensorsCollectionNewSensorsToAttach.getIdsensors());
+                attachedSensorsCollectionNew.add(sensorsCollectionNewSensorsToAttach);
+            }
+            sensorsCollectionNew = attachedSensorsCollectionNew;
+            sensortypes.setSensorsCollection(sensorsCollectionNew);
             sensortypes = em.merge(sensortypes);
+            for (Sensors sensorsCollectionNewSensors : sensorsCollectionNew) {
+                if (!sensorsCollectionOld.contains(sensorsCollectionNewSensors)) {
+                    Sensortypes oldSensorTypesidsensorTypesOfSensorsCollectionNewSensors = sensorsCollectionNewSensors.getSensorTypesidsensorTypes();
+                    sensorsCollectionNewSensors.setSensorTypesidsensorTypes(sensortypes);
+                    sensorsCollectionNewSensors = em.merge(sensorsCollectionNewSensors);
+                    if (oldSensorTypesidsensorTypesOfSensorsCollectionNewSensors != null && !oldSensorTypesidsensorTypesOfSensorsCollectionNewSensors.equals(sensortypes)) {
+                        oldSensorTypesidsensorTypesOfSensorsCollectionNewSensors.getSensorsCollection().remove(sensorsCollectionNewSensors);
+                        oldSensorTypesidsensorTypesOfSensorsCollectionNewSensors = em.merge(oldSensorTypesidsensorTypesOfSensorsCollectionNewSensors);
+                    }
+                }
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -81,7 +135,7 @@ public class SensortypesJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws NonexistentEntityException {
+    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -92,6 +146,17 @@ public class SensortypesJpaController implements Serializable {
                 sensortypes.getIdsensorTypes();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The sensortypes with id " + id + " no longer exists.", enfe);
+            }
+            List<String> illegalOrphanMessages = null;
+            Collection<Sensors> sensorsCollectionOrphanCheck = sensortypes.getSensorsCollection();
+            for (Sensors sensorsCollectionOrphanCheckSensors : sensorsCollectionOrphanCheck) {
+                if (illegalOrphanMessages == null) {
+                    illegalOrphanMessages = new ArrayList<String>();
+                }
+                illegalOrphanMessages.add("This Sensortypes (" + sensortypes + ") cannot be destroyed since the Sensors " + sensorsCollectionOrphanCheckSensors + " in its sensorsCollection field has a non-nullable sensorTypesidsensorTypes field.");
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
             }
             em.remove(sensortypes);
             em.getTransaction().commit();

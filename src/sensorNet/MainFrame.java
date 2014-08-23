@@ -470,7 +470,7 @@ public class MainFrame extends javax.swing.JFrame
                 
                 sensorTypeTable.setValueAt(sensorTypeData.getIdsensorTypes(), rowIndex, 0);
                 sensorTypeTable.setValueAt(sensorTypeData.getType(), rowIndex, 1);
-                sensorTypeTable.setValueAt(sensorTypeData.getPrefix(), rowIndex, 2);
+                sensorTypeTable.setValueAt(sensorTypeData.getNetworkprefix(), rowIndex, 2);
                 
                 rowIndex++;
                 
