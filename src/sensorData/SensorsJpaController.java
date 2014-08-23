@@ -299,5 +299,35 @@ public class SensorsJpaController implements Serializable {
         return results.get(results.size() - 1).getNetworkId();
         
     }
+
+    Sensors findActiveSensor(String sensorID) {
+        
+        List<Sensors> results = null;
+        
+        EntityManager em = getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();     // begin the transaction
+        
+        try
+        {
+            // create the query to retrieve the tuples
+
+            Query q = em.createNamedQuery("Sensors.findSensor");
+            q.setParameter("networkId",  sensorID);
+            results = q.getResultList();
+            tx.commit();
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(LocationsJpaController.class.getName()).log(Level.SEVERE, "Exception - ", ex);
+            tx.rollback();
+        }
+        
+        if (results.isEmpty())
+            return null;
+       
+        return results.get(0);
+        
+    }
     
 }

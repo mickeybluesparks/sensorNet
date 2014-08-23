@@ -7,6 +7,7 @@
 package sensorComms;
 
 import LLAP.LLAPMessageParser;
+import java.util.Date;
 import java.util.List;
 import java.util.TooManyListenersException;
 import java.util.logging.Level;
@@ -31,7 +32,7 @@ public class SensorDataHandler implements SerialPortDataListener {
     private final String rebootDevice = "REBOOT---";
     private final String setIntervalPeriod = "INTVL";
     
-    private final String temperatureInterval = "010S";
+    private final String temperatureInterval = "030S";
     
     private String newSensorID;
     private String newSensorType;
@@ -159,6 +160,14 @@ public class SensorDataHandler implements SerialPortDataListener {
                     
                 }
              }
+            
+            if (msgParser.receivedTemperature())
+            {
+                // we have a temperature reading to record
+                
+                database.addDataRecord(new Date(), sensorID, msgParser.getMessageValue());
+                              
+            }
         }               
     }    
 }

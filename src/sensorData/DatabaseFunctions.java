@@ -8,6 +8,7 @@ package sensorData;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import sensorData.exceptions.*;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,6 +28,7 @@ public class DatabaseFunctions {
     private LocationsJpaController controller = null;
     private SensortypesJpaController sensorTypeController = null;
     private SensorsJpaController sensorController = null;
+    private SensorDataJpaController sensorDataController = null;
     private EntityManager em = null;
 
     
@@ -47,6 +49,7 @@ public class DatabaseFunctions {
         EntityManagerFactory emf = controller.getEntityManagerFactory();
         sensorTypeController = SensortypesJpaController.getInstance(emf);
         sensorController = SensorsJpaController.getInstance(emf);
+        sensorDataController = SensorDataJpaController.getInstance(emf);
         
         return true;
     }
@@ -171,6 +174,7 @@ public class DatabaseFunctions {
         sensor.setNetworkId(networkID);
         sensor.setLocationsIdlocations(controller.findLocationByName(roomName));
         sensor.setSensorTypesidsensorTypes(sensorTypeRecord);
+        sensor.setActive(true);
         
         sensorController.create(sensor);
         
@@ -214,6 +218,23 @@ public class DatabaseFunctions {
         }
         
         return networkID;
+    }
+
+    public void addDataRecord(Date timeStamp, String sensorID, double messageValue) {
+        
+        Sensors sensor = sensorController.findActiveSensor(sensorID);
+        
+        if (sensor == null)
+            return;             // error - no active sensor found
+        
+        SensorData dataRec = new SensorData();
+        
+        dataRec.setTimeStamp(timeStamp);
+        dataRec.setValue1((float)messageValue);
+        dataRec.setSensorsIdsensors(sensor);
+        
+        sensorDataController.create(dataRec);
+        
     }
     
 }

@@ -23,8 +23,7 @@ import sensorData.exceptions.NonexistentEntityException;
 public class SensorDataJpaController implements Serializable {
 
     private static SensorDataJpaController instance = null;
-    
-    
+     
     public static SensorDataJpaController getInstance(EntityManagerFactory emf)
     {
         
