@@ -30,6 +30,7 @@ public class DatabaseFunctions {
     
     private LocationsJpaController controller = null;
     private SensortypesJpaController sensorTypeController = null;
+    private SensorsJpaController sensorController = null;
     private EntityManager em = null;
 
     
@@ -49,6 +50,7 @@ public class DatabaseFunctions {
         controller = LocationsJpaController.getInstance();
         EntityManagerFactory emf = controller.getEntityManagerFactory();
         sensorTypeController = SensortypesJpaController.getInstance(emf);
+        sensorController = SensorsJpaController.getInstance(emf);
         
         return true;
     }
@@ -145,6 +147,35 @@ public class DatabaseFunctions {
             return;
         
         sensorTypeController.destroy(sensorTypeData.getIdsensorTypes());
+    }
+    
+    public String addNewSensor(String type, String roomName)
+    {
+        Sensors sensor = new Sensors();     // create a new record
+        
+        // determine sensor network ID
+        
+        Sensortypes sensorTypeRecord = sensorTypeController.findSensorByType(type);
+        
+        String networkID = sensorTypeRecord.getPrefix();
+        
+        if (sensorController.getSensorsCount() > 0)
+        {
+            String lastNetworkID = sensorController.findLastNetwordID(networkID);
+            
+            networkID += (lastNetworkID.charAt(1) + 1);
+            
+        }
+        else
+            networkID += "A";
+        
+        sensor.setNetworkId(networkID);
+        sensor.setLocationsIdlocations(controller.findLocationByName(roomName));
+        sensor.setSensorTypesidsensorTypes(sensorTypeRecord);
+        
+        sensorController.create(sensor);
+        
+        return networkID;
     }
     
 }

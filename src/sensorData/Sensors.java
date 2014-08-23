@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Sensors.findAll", query = "SELECT s FROM Sensors s"),
     @NamedQuery(name = "Sensors.findByIdsensors", query = "SELECT s FROM Sensors s WHERE s.idsensors = :idsensors"),
     @NamedQuery(name = "Sensors.findByNetworkId", query = "SELECT s FROM Sensors s WHERE s.networkId = :networkId"),
-    @NamedQuery(name = "Sensors.findByActive", query = "SELECT s FROM Sensors s WHERE s.active = :active")})
+    @NamedQuery(name = "Sensors.findByActive", query = "SELECT s FROM Sensors s WHERE s.active = :active"),
+    @NamedQuery(name = "Sensors.findAllTypes", query = "SELECT s FROM Sensors s WHERE s.networkId LIKE :networkPrefix ORDER BY s.networkId")})
 public class Sensors implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
