@@ -8,7 +8,7 @@ import sensorData.Locations;
 import sensorData.SensorData;
 import sensorData.Sensortypes;
 
-@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-08-23T18:40:21")
+@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-08-24T15:47:59")
 @StaticMetamodel(Sensors.class)
 public class Sensors_ { 
 

@@ -89,7 +89,7 @@ public class LLAPMessageParserTest {
     }
     
      /**
-     * Test of parseMessage method, - check for battery low message.
+     * Test of parseMessage method - check for battery low message.
      */
     @Test
     public void testBatteryLowMessage()
@@ -115,4 +115,29 @@ public class LLAPMessageParserTest {
         assertEquals(expResult, instance.receivedBatteryLevel());
     }
     
+     /**
+     * Test of parseMessage method - check for version message.
+     */
+    @Test
+    public void testAppVersionMessage()
+    {
+        System.out.println("parseMessage -  Application Version received");
+        String msg = "a--APVER1.05";
+        LLAPMessageParser instance = new LLAPMessageParser();
+        boolean expResult = true;
+        boolean result = instance.parseMessage(msg.getBytes());
+        assertEquals(expResult, result);    // parsed ok
+        System.out.println("Parsed OK");       
+        
+        result = instance.receivedVersionNumber();
+        assertEquals(expResult, result);    // correct msg received
+        System.out.println("Version Number Received");
+        
+        double expVersion = 1.05;
+        double version = instance.getMessageValue();
+        System.out.println("Version Number Correct?");
+        assertEquals(expVersion, version, 0.01);
+        
+        
+    }
 }

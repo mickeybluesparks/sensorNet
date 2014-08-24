@@ -7,7 +7,20 @@
 package LLAP;
 
 /**
- *
+ * This class is responsible for parsing the LLAP Messages.
+ * 
+ * LLAP message structure aDDxxxxxxxxx
+ * where DD is a two character device ID followed by up to 9 characters
+ * padded out with '-'.
+ * LLAP messages are taken from the following list:
+ *  a--APVERX.XX - application version number X.XX
+ *  a--AWAKE---- - Device has just woken up in order to send data
+ * 
+ * <p>
+ * The message is first checked for length (12 bytes) and
+ * the first character has to be 'a'. The message is then stripped
+ * of any trailing '-' padding characters before being parsed and the
+ * appropriate flags and data values being set
  * @author Mike
  */
 public class LLAPMessageParser {

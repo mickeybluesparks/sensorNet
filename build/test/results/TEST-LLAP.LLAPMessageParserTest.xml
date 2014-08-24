@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Mike-Laptop" name="LLAP.LLAPMessageParserTest" skipped="0" tests="3" time="0.302" timestamp="2014-08-23T20:44:22">
+<testsuite errors="0" failures="0" hostname="Mike-Laptop" name="LLAP.LLAPMessageParserTest" skipped="0" tests="4" time="0.325" timestamp="2014-08-24T14:48:07">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="GB" />
@@ -64,7 +64,7 @@
     <property name="copylibs.rebase" value="true" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner LLAP.LLAPMessageParserTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\NetBeansProjects\sensorNet\build\test\results\TEST-LLAP.LLAPMessageParserTest.xml crashfile=C:\NetBeansProjects\sensorNet\build\junitvmwatcher946372790382470123.properties propsfile=C:\NetBeansProjects\sensorNet\build\junit6314749323968652303.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner LLAP.LLAPMessageParserTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\NetBeansProjects\sensorNet\build\test\results\TEST-LLAP.LLAPMessageParserTest.xml crashfile=C:\NetBeansProjects\sensorNet\build\junitvmwatcher453344272533485034.properties propsfile=C:\NetBeansProjects\sensorNet\build\junit7117486372124375718.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -269,6 +269,7 @@
     <property name="meta.inf.dir" value="src/META-INF" />
     <property name="javadoc.encoding.used" value="UTF-8" />
     <property name="dist.jar" value="dist/sensorNet.jar" />
+    <property name="netbeans.automatic.build" value="true" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="ant.project.name" value="sensorNet" />
     <property name="netbeans.hash.code" value="unique=NB_CND_EXTIDE_GFMOD_GROOVY_JAVA_JC_MOB_PHP_TOMCAT_WEBCOMMON_WEBEE05c859f6f-93fa-4b4d-8a15-231ef1d3f534_302e1585-d9d5-4100-97f3-17c204486fcc" />
@@ -291,16 +292,16 @@
     <property name="libs.absolutelayout.javadoc" value="" />
     <property name="libs.spring-framework300.javadoc" value="" />
     <property name="libs.hibernate-persistence.maven-pom" value="" />
-    <property name="guice.disable.misplaced.annotation.check" value="true" />
     <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="guice.disable.misplaced.annotation.check" value="true" />
     <property name="libs.jakarta_slide_ant_webdav.maven-pom" value="" />
     <property name="do.archive+main.class.available" value="true" />
     <property name="libs.sjmc-ant-utils.src" value="" />
-    <property name="libs.cdc-agui-swing-layout.javadoc" value="" />
     <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="libs.cdc-agui-swing-layout.javadoc" value="" />
     <property name="libs.javac-api.classpath" value="C:\Program Files\NetBeans 7.4\java\modules\ext\nb-javac-api.jar" />
-    <property name="libs.nokiaS80-ant-utils.classpath" value="C:\Program Files\NetBeans 7.4\mobility\modules\ext\org-netbeans-modules-j2me-cdc-project-nokiaS80.jar" />
     <property name="java.version" value="1.7.0_15" />
+    <property name="libs.nokiaS80-ant-utils.classpath" value="C:\Program Files\NetBeans 7.4\mobility\modules\ext\org-netbeans-modules-j2me-cdc-project-nokiaS80.jar" />
     <property name="javadoc.version" value="false" />
     <property name="run.jvmargs.ide" value="" />
     <property name="libs.MySQLDriver.javadoc" value="" />
@@ -332,8 +333,8 @@
     <property name="libs.javaee-web-api-7.0.maven-pom" value="" />
     <property name="libs.restlib.src" value="" />
     <property name="javac.source" value="1.7" />
-    <property name="ant.file.type.sensorNet-impl" value="file" />
     <property name="build.generated.dir" value="build/generated" />
+    <property name="ant.file.type.sensorNet-impl" value="file" />
     <property name="libs.hibernate-persistence.src" value="" />
     <property name="line.separator" value="&#xd;&#xa;" />
     <property name="java.specification.version" value="1.7" />
@@ -350,8 +351,8 @@
     <property name="built-jar.properties" value="C:\NetBeansProjects\sensorNet\build\built-jar.properties" />
     <property name="build.test.classes.dir" value="build/test/classes" />
     <property name="src.dir" value="src" />
-    <property name="annotation.processing.enabled" value="true" />
     <property name="sun.awt.keepWorkingSetOnMinimize" value="true" />
+    <property name="annotation.processing.enabled" value="true" />
     <property name="libs.jsf20.src" value="" />
     <property name="libs.jpa20-persistence.src" value="" />
     <property name="libs.jsf12.src" value="" />
@@ -367,11 +368,11 @@
     <property name="libs.cdc-agui-swing-layout.classpath" value="C:\Program Files\NetBeans 7.4\mobility\modules\ext\cdc-agui-swing-layout.jar" />
     <property name="dist.dir" value="dist" />
     <property name="libs.groovy-all.javadoc" value="" />
-    <property name="file.reference.jna-3.5.1.jar" value="C:\purejavacomm-master\lib\jna-3.5.1.jar" />
     <property name="testng.debug.mode" value="" />
+    <property name="file.reference.jna-3.5.1.jar" value="C:\purejavacomm-master\lib\jna-3.5.1.jar" />
     <property name="javac.fork" value="false" />
-    <property name="libs.Wicket 1.6.0.src" value="" />
     <property name="libs.sjmc-ant-utils.classpath" value="C:\Program Files\NetBeans 7.4\mobility\modules\ext\org-netbeans-modules-j2me-cdc-project-sjmc.jar" />
+    <property name="libs.Wicket 1.6.0.src" value="" />
     <property name="libs.groovy-all.classpath" value="C:\Program Files\NetBeans 7.4\groovy\modules\ext\groovy-all.jar" />
     <property name="libs.JMUnit4CLDC10.classpath" value="C:\Program Files\NetBeans 7.4\mobility\modules\ext\jmunit4cldc10-1.2.1.jar" />
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
@@ -381,20 +382,20 @@
     <property name="libs.MySQLDriver.src" value="" />
     <property name="libs.ant-contrib.maven-pom" value="" />
     <property name="libs.nokiadeployment.javadoc" value="" />
-    <property name="java.runtime.version" value="1.7.0_15-b03" />
     <property name="build.test.results.dir" value="build/test/results" />
+    <property name="java.runtime.version" value="1.7.0_15-b03" />
     <property name="libs.ejb3-persistence.javadoc" value="" />
     <property name="libs.sjmc-ant-utils.javadoc" value="" />
     <property name="default.javac.target" value="1.7" />
     <property name="libs.junit_4.classpath" value="C:\Program Files\NetBeans 7.4\platform\modules\ext\junit-4.10.jar" />
     <property name="user.timezone" value="" />
     <property name="nb.junit.single" value="false" />
-    <property name="libs.javaee-endorsed-api-6.0.maven-pom" value="" />
     <property name="libs.ant-contrib.src" value="" />
     <property name="libs.JAVADB_DRIVER_LABEL.javadoc" value="" />
+    <property name="libs.javaee-endorsed-api-6.0.maven-pom" value="" />
     <property name="netbeans.dirs" value="C:\Program Files\NetBeans 7.4\nb;C:\Program Files\NetBeans 7.4\ergonomics;C:\Program Files\NetBeans 7.4\ide;C:\Program Files\NetBeans 7.4\extide;C:\Program Files\NetBeans 7.4\java;C:\Program Files\NetBeans 7.4\apisupport;C:\Program Files\NetBeans 7.4\webcommon;C:\Program Files\NetBeans 7.4\websvccommon;C:\Program Files\NetBeans 7.4\enterprise;C:\Program Files\NetBeans 7.4\mobility;C:\Program Files\NetBeans 7.4\profiler;C:\Program Files\NetBeans 7.4\python;C:\Program Files\NetBeans 7.4\php;C:\Program Files\NetBeans 7.4\identity;C:\Program Files\NetBeans 7.4\harness;C:\Program Files\NetBeans 7.4\cnd;C:\Program Files\NetBeans 7.4\dlight;C:\Program Files\NetBeans 7.4\groovy;C:\Program Files\NetBeans 7.4\extra;C:\Program Files\NetBeans 7.4\javacard;C:\Program Files\NetBeans 7.4\javafx" />
-    <property name="libs.jstl.javadoc" value="C:\Program Files\NetBeans 7.4\enterprise\docs\javaee-doc-api.jar" />
     <property name="libs.jsf20.javadoc" value="C:\Program Files\NetBeans 7.4\enterprise\docs\javaee-doc-api.jar" />
+    <property name="libs.jstl.javadoc" value="C:\Program Files\NetBeans 7.4\enterprise\docs\javaee-doc-api.jar" />
     <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.7.0_15\jre\lib\ext;C:\Windows\Sun\Java\lib\ext" />
     <property name="libs.metro.src" value="" />
     <property name="libs.savaje-ant-utils.maven-pom" value="" />
@@ -411,16 +412,16 @@
     <property name="libs.jpa20-persistence.classpath" value="C:\Users\Mike\AppData\Roaming\NetBeans\7.4\modules\ext\eclipselink\javax.persistence_2.1.0.v201304241213.jar" />
     <property name="libs.cdc-pp-awt-layout.maven-pom" value="" />
     <property name="os.version" value="6.1" />
-    <property name="application.args" value="" />
     <property name="libs.hibernate-persistencemodelgen.src" value="" />
+    <property name="application.args" value="" />
     <property name="libs.javaee-api-7.0.maven-pom" value="" />
+    <property name="sun.awt.enableExtraMouseButtons" value="true" />
     <property name="libs.JMUnit4CLDC11.maven-pom" value="" />
     <property name="main.class.available" value="true" />
-    <property name="sun.awt.enableExtraMouseButtons" value="true" />
     <property name="sun.desktop" value="windows" />
     <property name="libs.restlib.javadoc" value="" />
-    <property name="libs.JAXB-ENDORSED.classpath" value="C:\Program Files\NetBeans 7.4\ide\modules\ext\jaxb\api\jaxb-api.jar" />
     <property name="nb.internal.action.name" value="test" />
+    <property name="libs.JAXB-ENDORSED.classpath" value="C:\Program Files\NetBeans 7.4\ide\modules\ext\jaxb\api\jaxb-api.jar" />
     <property name="libs.javaee-api-7.0.javadoc" value="C:\Program Files\NetBeans 7.4\enterprise\docs\javaee-doc-api.jar" />
     <property name="libs.eclipselink.classpath" value="C:\Users\Mike\AppData\Roaming\NetBeans\7.4\modules\ext\eclipselink\eclipselink.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\modules\ext\eclipselink\javax.persistence_2.1.0.v201304241213.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\modules\ext\eclipselink\org.eclipse.persistence.jpa.jpql_2.5.1.v20130918-f2b9fc5.jar" />
     <property name="libs.PureJavaComm.javadoc" value="" />
@@ -435,12 +436,12 @@
     <property name="libs.ejb3-persistence.classpath" value="C:\Program Files\NetBeans 7.4\java\modules\ext\hibernate\hibernate-jpa-2.0-api-1.0.1.Final.jar" />
     <property name="libs.hibernate-persistencemodelgen.javadoc" value="" />
     <property name="libs.JAXB-ENDORSED.src" value="" />
-    <property name="libs.spring-framework.javadoc" value="" />
     <property name="dist.archive.excludes" value="" />
-    <property name="libs.Wicket 1.6.0.classpath" value="C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\slf4j-api-1.4.2.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\slf4j-jdk14-1.4.2.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-core-6.0.0.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-devutils-6.0.0.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-extensions-6.0.0.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-ioc-6.0.0.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-request-6.0.0.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-util-6.0.0.jar" />
+    <property name="libs.spring-framework.javadoc" value="" />
     <property name="libs.testng.javadoc" value="C:\Program Files\NetBeans 7.4\platform\docs\testng-6.8.1-javadoc.zip" />
-    <property name="user.script" value="" />
+    <property name="libs.Wicket 1.6.0.classpath" value="C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\slf4j-api-1.4.2.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\slf4j-jdk14-1.4.2.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-core-6.0.0.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-devutils-6.0.0.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-extensions-6.0.0.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-ioc-6.0.0.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-request-6.0.0.jar;C:\Users\Mike\AppData\Roaming\NetBeans\7.4\libs\wicket-util-6.0.0.jar" />
     <property name="libs.PostgreSQLDriver.classpath" value="C:\Program Files\NetBeans 7.4\ide\modules\ext\postgresql-9.2-1002.jdbc4.jar" />
+    <property name="user.script" value="" />
     <property name="libs.jsf12.maven-pom" value="" />
     <property name="libs.junit.src" value="" />
     <property name="annotation.processing.source.output" value="build/generated-sources/ap-source-output" />
@@ -449,23 +450,28 @@
     <property name="libs.CopyLibs.src" value="" />
     <property name="libs.jsp-compilation.classpath" value="C:\Program Files\NetBeans 7.4\extide\ant\lib\ant.jar;C:\Program Files\NetBeans 7.4\enterprise\modules\ext\servlet3.1-jsp2.3-api.jar;C:\Program Files\NetBeans 7.4\enterprise\modules\ext\glassfish-jspparser-4.0.jar;C:\Program Files\NetBeans 7.4\enterprise\modules\ext\jsf-2_2\javax.faces.jar;C:\Program Files\NetBeans 7.4\enterprise\modules\ext\jstl-api.jar;C:\Program Files\NetBeans 7.4\extide\ant\lib\ant-launcher.jar" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.1 compiled on May 15 2013" />
-    <property name="file.encoding" value="Cp1252" />
     <property name="build.classes.excludes" value="**/*.java,**/*.form" />
-    <property name="jdkBug6558476" value="false" />
+    <property name="file.encoding" value="Cp1252" />
     <property name="javadoc.nonavbar" value="false" />
+    <property name="jdkBug6558476" value="false" />
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
     <property name="libs.PureJavaComm.src" value="" />
     <property name="libs.Wicket 1.6.0.javadoc" value="" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="C:\Program Files\NetBeans 7.4\enterprise\docs\javaee-doc-api.jar" />
   </properties>
-  <testcase classname="LLAP.LLAPMessageParserTest" name="testParseMessage" time="0.01" />
+  <testcase classname="LLAP.LLAPMessageParserTest" name="testParseMessage" time="0.009" />
+  <testcase classname="LLAP.LLAPMessageParserTest" name="testAppVersionMessage" time="0.001" />
   <testcase classname="LLAP.LLAPMessageParserTest" name="testDeviceID" time="0.007" />
-  <testcase classname="LLAP.LLAPMessageParserTest" name="testBatteryLowMessage" time="0.001" />
+  <testcase classname="LLAP.LLAPMessageParserTest" name="testBatteryLowMessage" time="0.007" />
   <system-out><![CDATA[parseMessage -  current LLAP Message format
 parseMessage - not a LLAP Message - missing a
 parseMessage - not a LLAP Message - wrong length (short)
 parseMessage - not a LLAP Message - wrong length (long)
+parseMessage -  Application Version received
+Parsed OK
+Version Number Received
+Version Number Correct?
 parseMessage -  checking Device ID extracted
 Default ID extraction
 ID = 'TZ' extraction

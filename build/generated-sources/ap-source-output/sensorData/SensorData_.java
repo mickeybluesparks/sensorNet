@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import sensorData.Sensors;
 
-@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-08-23T18:40:21")
+@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-08-24T15:47:59")
 @StaticMetamodel(SensorData.class)
 public class SensorData_ { 
 

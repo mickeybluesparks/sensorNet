@@ -6,6 +6,7 @@
 
 package sensorNet;
 
+import java.awt.Color;
 import sensorComms.*;
 
 import java.awt.Dialog;
@@ -82,11 +83,22 @@ public class MainFrame extends javax.swing.JFrame
 
         jStatusBar = new javax.swing.JPanel();
         statusMsg = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jDatabaseConnectionState = new javax.swing.JTextField();
+        jSerialPortState = new javax.swing.JTextField();
+        jSensorNetworkState = new javax.swing.JTextField();
+        jIncomingData = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jFileMenu = new javax.swing.JMenu();
-        enableSensorMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jExitMenuItem = new javax.swing.JMenuItem();
+        jSensorNetworkMenu = new javax.swing.JMenu();
+        enableSensorMenuItem = new javax.swing.JMenuItem();
+        sensorStateMenuItem = new javax.swing.JMenuItem();
+        reportsMenuItem = new javax.swing.JMenuItem();
         jAdminMenu = new javax.swing.JMenu();
         jRoomMenuItem = new javax.swing.JMenuItem();
         jSensorTypesMenuItem = new javax.swing.JMenuItem();
@@ -113,15 +125,39 @@ public class MainFrame extends javax.swing.JFrame
                 .addComponent(statusMsg))
         );
 
-        jFileMenu.setText("File");
+        jLabel1.setText("Database Connection");
 
-        enableSensorMenuItem.setText("Start Sensor Network");
-        enableSensorMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enableSensorMenuItemActionPerformed(evt);
-            }
-        });
-        jFileMenu.add(enableSensorMenuItem);
+        jLabel2.setText("Communications Port");
+
+        jLabel3.setText("Sensor Network");
+
+        jLabel4.setText("Sensor Data");
+
+        jDatabaseConnectionState.setEditable(false);
+        jDatabaseConnectionState.setBackground(new java.awt.Color(255, 0, 0));
+        jDatabaseConnectionState.setForeground(new java.awt.Color(255, 255, 255));
+        jDatabaseConnectionState.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jDatabaseConnectionState.setText("Closed");
+
+        jSerialPortState.setEditable(false);
+        jSerialPortState.setBackground(new java.awt.Color(255, 0, 0));
+        jSerialPortState.setForeground(new java.awt.Color(255, 255, 255));
+        jSerialPortState.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jSerialPortState.setText("Closed");
+
+        jSensorNetworkState.setEditable(false);
+        jSensorNetworkState.setBackground(new java.awt.Color(255, 0, 0));
+        jSensorNetworkState.setForeground(new java.awt.Color(255, 255, 255));
+        jSensorNetworkState.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jSensorNetworkState.setText("Disabled");
+
+        jIncomingData.setEditable(false);
+        jIncomingData.setBackground(new java.awt.Color(153, 153, 153));
+        jIncomingData.setForeground(new java.awt.Color(255, 255, 255));
+        jIncomingData.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jIncomingData.setText("Silent");
+
+        jFileMenu.setText("File");
         jFileMenu.add(jSeparator1);
 
         jExitMenuItem.setText("Exit");
@@ -134,6 +170,24 @@ public class MainFrame extends javax.swing.JFrame
         jFileMenu.add(jExitMenuItem);
 
         jMenuBar1.add(jFileMenu);
+
+        jSensorNetworkMenu.setText("Sensor Network");
+
+        enableSensorMenuItem.setText("Start Sensor Network");
+        enableSensorMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enableSensorMenuItemActionPerformed(evt);
+            }
+        });
+        jSensorNetworkMenu.add(enableSensorMenuItem);
+
+        sensorStateMenuItem.setText("Set Sensor State");
+        jSensorNetworkMenu.add(sensorStateMenuItem);
+
+        reportsMenuItem.setText("Display Data");
+        jSensorNetworkMenu.add(reportsMenuItem);
+
+        jMenuBar1.add(jSensorNetworkMenu);
 
         jAdminMenu.setText("Admin");
 
@@ -162,11 +216,41 @@ public class MainFrame extends javax.swing.JFrame
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jStatusBar, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jDatabaseConnectionState)
+                    .addComponent(jSerialPortState)
+                    .addComponent(jSensorNetworkState, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(jIncomingData))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(346, Short.MAX_VALUE)
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jDatabaseConnectionState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jSerialPortState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jSensorNetworkState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jIncomingData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                 .addComponent(jStatusBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -197,6 +281,7 @@ public class MainFrame extends javax.swing.JFrame
             // Open the Database 
             
             statusMsg.setText("Opening Database.....");
+            jDatabaseConnectionState.setText("Opening.");
              
             if (database != null)
                 result = database.openDatabase();        
@@ -204,10 +289,15 @@ public class MainFrame extends javax.swing.JFrame
             if (result)
             {
                statusMsg.setText("Database Opened OK");
+               jDatabaseConnectionState.setText("Open");
+               jDatabaseConnectionState.setBackground(Color.GREEN);
+               jDatabaseConnectionState.setForeground(Color.BLACK);
             }
             else
             {
                 // display a message box with error message
+                
+                jDatabaseConnectionState.setText("ERROR");
                 
                 JOptionPane.showMessageDialog(this,  
                         "Database Failed to Open - Please Check Server","ERROR",            
@@ -230,7 +320,12 @@ public class MainFrame extends javax.swing.JFrame
            sensorPortOpen = sensorPort.openPort(portName);
  
            if (sensorPortOpen)
+           {
                statusMsg.setText("Sensor Port Open");
+               jSerialPortState.setText("Open");
+               jSerialPortState.setBackground(Color.GREEN);
+               jSerialPortState.setForeground(Color.BLACK);
+           }
         }
        
     }
@@ -313,6 +408,9 @@ public class MainFrame extends javax.swing.JFrame
         {
             dataComms = new SensorDataHandler(sensorPort);
             dataComms.enable();
+            jSensorNetworkState.setText("Active");
+            jSensorNetworkState.setBackground(Color.GREEN);
+            jSensorNetworkState.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_enableSensorMenuItemActionPerformed
 
@@ -354,13 +452,24 @@ public class MainFrame extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem enableSensorMenuItem;
     private javax.swing.JMenu jAdminMenu;
+    private javax.swing.JTextField jDatabaseConnectionState;
     private javax.swing.JMenuItem jExitMenuItem;
     private javax.swing.JMenu jFileMenu;
+    private javax.swing.JTextField jIncomingData;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jRoomMenuItem;
+    private javax.swing.JMenu jSensorNetworkMenu;
+    private javax.swing.JTextField jSensorNetworkState;
     private javax.swing.JMenuItem jSensorTypesMenuItem;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JTextField jSerialPortState;
     private javax.swing.JPanel jStatusBar;
+    private javax.swing.JMenuItem reportsMenuItem;
+    private javax.swing.JMenuItem sensorStateMenuItem;
     private javax.swing.JLabel statusMsg;
     // End of variables declaration//GEN-END:variables
 
