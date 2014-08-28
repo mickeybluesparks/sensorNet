@@ -1,0 +1,1950 @@
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET @OLD_UNIQUE_CHECKS=@@[*]UNIQUE_CHECKS, UNIQUE_CHECKS=0"; expected "identifier"; SQL statement:
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 [42001-173]
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET @OLD_FOREIGN_KEY_CHECKS=@@[*]FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0"; expected "identifier"; SQL statement:
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 [42001-173]
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET @OLD_SQL_MODE=@@[*]SQL_MODE, SQL_MODE='TRADITIONAL'"; expected "identifier"; SQL statement:
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL' [42001-173]
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE SCHEMA IF NOT EXISTS ""SENSOR_DATA"" DEFAULT[*] CHARACTER SET LATIN1 COLLATE LATIN1_SWEDISH_CI "; SQL statement:
+CREATE SCHEMA IF NOT EXISTS `sensor_data` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci [42000-173]
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "USE[*] ""SENSOR_DATA"" "; expected "UPDATE, {"; SQL statement:
+USE `sensor_data` [42001-173]
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Schema "SENSOR_DATA" not found; SQL statement:
+-- -----------------------------------------------------
+-- Table `sensor_data`.`locations`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sensor_data`.`locations` [90079-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.getSchema(Parser.java:616)
+	at org.h2.command.Parser.getSchema(Parser.java:623)
+	at org.h2.command.Parser.parseDrop(Parser.java:1217)
+	at org.h2.command.Parser.parsePrepared(Parser.java:338)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Schema "SENSOR_DATA" not found; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`locations` (
+  `idlocations` INT NOT NULL AUTO_INCREMENT ,
+  `room_name` VARCHAR(45) NOT NULL DEFAULT 'Study' ,
+  PRIMARY KEY (`idlocations`) ,
+  INDEX `room_key` (`room_name` ASC) )
+ENGINE = InnoDB [90079-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.getSchema(Parser.java:616)
+	at org.h2.command.Parser.getSchema(Parser.java:623)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5302)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Schema "SENSOR_DATA" not found; SQL statement:
+-- -----------------------------------------------------
+-- Table `sensor_data`.`sensorTypes`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sensor_data`.`sensorTypes` [90079-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.getSchema(Parser.java:616)
+	at org.h2.command.Parser.getSchema(Parser.java:623)
+	at org.h2.command.Parser.parseDrop(Parser.java:1217)
+	at org.h2.command.Parser.parsePrepared(Parser.java:338)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Schema "SENSOR_DATA" not found; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensorTypes` (
+  `idsensorTypes` INT NOT NULL AUTO_INCREMENT ,
+  `type` VARCHAR(45) NOT NULL ,
+  `Networkprefix` VARCHAR(1) NOT NULL ,
+  PRIMARY KEY (`idsensorTypes`) )
+ENGINE = InnoDB [90079-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.getSchema(Parser.java:616)
+	at org.h2.command.Parser.getSchema(Parser.java:623)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5302)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Schema "SENSOR_DATA" not found; SQL statement:
+-- -----------------------------------------------------
+-- Table `sensor_data`.`sensors`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sensor_data`.`sensors` [90079-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.getSchema(Parser.java:616)
+	at org.h2.command.Parser.getSchema(Parser.java:623)
+	at org.h2.command.Parser.parseDrop(Parser.java:1217)
+	at org.h2.command.Parser.parsePrepared(Parser.java:338)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Schema "SENSOR_DATA" not found; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+  `network_id` VARCHAR(2) NOT NULL ,
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+  `locations_idlocations` INT NOT NULL ,
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+  PRIMARY KEY (`idsensors`) ,
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+  CONSTRAINT `fk_sensors_locations1`
+    FOREIGN KEY (`locations_idlocations` )
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sensors_sensorTypes1`
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [90079-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.getSchema(Parser.java:616)
+	at org.h2.command.Parser.getSchema(Parser.java:623)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5302)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Schema "SENSOR_DATA" not found; SQL statement:
+-- -----------------------------------------------------
+-- Table `sensor_data`.`sensor_data`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sensor_data`.`sensor_data` [90079-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.getSchema(Parser.java:616)
+	at org.h2.command.Parser.getSchema(Parser.java:623)
+	at org.h2.command.Parser.parseDrop(Parser.java:1217)
+	at org.h2.command.Parser.parsePrepared(Parser.java:338)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Schema "SENSOR_DATA" not found; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensor_data` (
+  `idsensor_data` INT NOT NULL AUTO_INCREMENT ,
+  `time_stamp` TIMESTAMP NOT NULL ,
+  `value_1` FLOAT NULL ,
+  `value_2` FLOAT NULL ,
+  `value_3` FLOAT NULL ,
+  `value_4` INT NULL ,
+  `value_5` INT NULL ,
+  `state_1` TINYINT(1) NULL ,
+  `state_2` TINYINT(1) NULL ,
+  `sensors_idsensors` INT NOT NULL ,
+  PRIMARY KEY (`idsensor_data`) ,
+  INDEX `fk_sensor_data_sensors1` (`sensors_idsensors` ASC) ,
+  INDEX `timestamp_index` (`time_stamp` ASC) ,
+  CONSTRAINT `fk_sensor_data_sensors1`
+    FOREIGN KEY (`sensors_idsensors` )
+    REFERENCES `sensor_data`.`sensors` (`idsensors` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [90079-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.getSchema(Parser.java:616)
+	at org.h2.command.Parser.getSchema(Parser.java:623)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5302)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`locations` to sensors [42102-173]
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensor_data` to sensors [42102-173]
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensors` to sensors [42102-173]
+08-26 21:21:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensorTypes` to sensors [42102-173]
+08-26 21:21:57 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET SQL_MODE[*]=@OLD_SQL_MODE"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET SQL_MODE=@OLD_SQL_MODE [42001-173]
+08-26 21:21:57 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET UNIQUE_CHECKS[*]=@OLD_UNIQUE_CHECKS"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS [42001-173]
+08-26 21:22:59 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "USE[*] ""SENSOR_DATA"" "; expected "UPDATE, {"; SQL statement:
+USE `sensor_data` [42001-173]
+08-26 21:22:59 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "ROOM_KEY"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`locations` (
+  `idlocations` INT NOT NULL AUTO_INCREMENT ,
+  `room_name` VARCHAR(45) NOT NULL DEFAULT 'Study' ,
+  PRIMARY KEY (`idlocations`) ,
+  INDEX `room_key` (`room_name` ASC) )
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:22:59 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+  `network_id` VARCHAR(2) NOT NULL ,
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+  `locations_idlocations` INT NOT NULL ,
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+  PRIMARY KEY (`idsensors`) ,
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+  CONSTRAINT `fk_sensors_locations1`
+    FOREIGN KEY (`locations_idlocations` )
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sensors_sensorTypes1`
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:22:59 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSOR_DATA_SENSORS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensor_data` (
+  `idsensor_data` INT NOT NULL AUTO_INCREMENT ,
+  `time_stamp` TIMESTAMP NOT NULL ,
+  `value_1` FLOAT NULL ,
+  `value_2` FLOAT NULL ,
+  `value_3` FLOAT NULL ,
+  `value_4` INT NULL ,
+  `value_5` INT NULL ,
+  `state_1` TINYINT(1) NULL ,
+  `state_2` TINYINT(1) NULL ,
+  `sensors_idsensors` INT NOT NULL ,
+  PRIMARY KEY (`idsensor_data`) ,
+  INDEX `fk_sensor_data_sensors1` (`sensors_idsensors` ASC) ,
+  INDEX `timestamp_index` (`time_stamp` ASC) ,
+  CONSTRAINT `fk_sensor_data_sensors1`
+    FOREIGN KEY (`sensors_idsensors` )
+    REFERENCES `sensor_data`.`sensors` (`idsensors` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:22:59 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`locations` to sensors [42102-173]
+08-26 21:22:59 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensor_data` to sensors [42102-173]
+08-26 21:22:59 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensors` to sensors [42102-173]
+08-26 21:22:59 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensorTypes` to sensors [42102-173]
+08-26 21:22:59 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET SQL_MODE[*]=@OLD_SQL_MODE"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET SQL_MODE=@OLD_SQL_MODE [42001-173]
+08-26 21:22:59 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET UNIQUE_CHECKS[*]=@OLD_UNIQUE_CHECKS"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS [42001-173]
+08-26 21:25:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "ROOM_KEY"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`locations` (
+  `idlocations` INT NOT NULL AUTO_INCREMENT ,
+  `room_name` VARCHAR(45) NOT NULL DEFAULT 'Study' ,
+  PRIMARY KEY (`idlocations`) ,
+  INDEX `room_key` (`room_name` ASC) )
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:25:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+  `network_id` VARCHAR(2) NOT NULL ,
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+  `locations_idlocations` INT NOT NULL ,
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+  PRIMARY KEY (`idsensors`) ,
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+  CONSTRAINT `fk_sensors_locations1`
+    FOREIGN KEY (`locations_idlocations` )
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sensors_sensorTypes1`
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:25:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSOR_DATA_SENSORS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensor_data` (
+  `idsensor_data` INT NOT NULL AUTO_INCREMENT ,
+  `time_stamp` TIMESTAMP NOT NULL ,
+  `value_1` FLOAT NULL ,
+  `value_2` FLOAT NULL ,
+  `value_3` FLOAT NULL ,
+  `value_4` INT NULL ,
+  `value_5` INT NULL ,
+  `state_1` TINYINT(1) NULL ,
+  `state_2` TINYINT(1) NULL ,
+  `sensors_idsensors` INT NOT NULL ,
+  PRIMARY KEY (`idsensor_data`) ,
+  INDEX `fk_sensor_data_sensors1` (`sensors_idsensors` ASC) ,
+  INDEX `timestamp_index` (`time_stamp` ASC) ,
+  CONSTRAINT `fk_sensor_data_sensors1`
+    FOREIGN KEY (`sensors_idsensors` )
+    REFERENCES `sensor_data`.`sensors` (`idsensors` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:25:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`locations` to sensors [42102-173]
+08-26 21:25:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensor_data` to sensors [42102-173]
+08-26 21:25:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensors` to sensors [42102-173]
+08-26 21:25:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensorTypes` to sensors [42102-173]
+08-26 21:25:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET SQL_MODE[*]=@OLD_SQL_MODE"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET SQL_MODE=@OLD_SQL_MODE [42001-173]
+08-26 21:25:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET UNIQUE_CHECKS[*]=@OLD_UNIQUE_CHECKS"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS [42001-173]
+08-26 21:31:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE  TABLE IF NOT EXISTS `sensor_data`.`locations` (
+  `idlocations` INT NOT NULL AUTO_INCREMENT ,
+  `room_name` VARCHAR(45) NOT NULL DEFAULT 'Study' ,
+  PRIMARY KEY (`idlocations`) ,
+  INDEX `room_key`  ON `sensor_data`.`locations (`room_name[*]` ASC) )
+ENGINE = InnoDB"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`locations` (
+  `idlocations` INT NOT NULL AUTO_INCREMENT ,
+  `room_name` VARCHAR(45) NOT NULL DEFAULT 'Study' ,
+  PRIMARY KEY (`idlocations`) ,
+  INDEX `room_key`  ON `sensor_data`.`locations (`room_name` ASC) )
+ENGINE = InnoDB [42000-173]
+08-26 21:31:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+  `network_id` VARCHAR(2) NOT NULL ,
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+  `locations_idlocations` INT NOT NULL ,
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+  PRIMARY KEY (`idsensors`) ,
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+  CONSTRAINT `fk_sensors_locations1`
+    FOREIGN KEY (`locations_idlocations` )
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sensors_sensorTypes1`
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:31:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSOR_DATA_SENSORS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensor_data` (
+  `idsensor_data` INT NOT NULL AUTO_INCREMENT ,
+  `time_stamp` TIMESTAMP NOT NULL ,
+  `value_1` FLOAT NULL ,
+  `value_2` FLOAT NULL ,
+  `value_3` FLOAT NULL ,
+  `value_4` INT NULL ,
+  `value_5` INT NULL ,
+  `state_1` TINYINT(1) NULL ,
+  `state_2` TINYINT(1) NULL ,
+  `sensors_idsensors` INT NOT NULL ,
+  PRIMARY KEY (`idsensor_data`) ,
+  INDEX `fk_sensor_data_sensors1` (`sensors_idsensors` ASC) ,
+  INDEX `timestamp_index` (`time_stamp` ASC) ,
+  CONSTRAINT `fk_sensor_data_sensors1`
+    FOREIGN KEY (`sensors_idsensors` )
+    REFERENCES `sensor_data`.`sensors` (`idsensors` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:31:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`locations` to sensors [42102-173]
+08-26 21:31:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensor_data` to sensors [42102-173]
+08-26 21:31:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensors` to sensors [42102-173]
+08-26 21:31:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensorTypes` to sensors [42102-173]
+08-26 21:31:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET SQL_MODE[*]=@OLD_SQL_MODE"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET SQL_MODE=@OLD_SQL_MODE [42001-173]
+08-26 21:31:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET UNIQUE_CHECKS[*]=@OLD_UNIQUE_CHECKS"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS [42001-173]
+08-26 21:32:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "="; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`locations` (
+  `idlocations` INT NOT NULL AUTO_INCREMENT ,
+  `room_name` VARCHAR(45) NOT NULL DEFAULT 'Study' ,
+  PRIMARY KEY (`idlocations`) ,
+  ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:32:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE INDEX `room_key`  ON `sensor_data`.`locations (`room_name[*]` ASC) )"; SQL statement:
+CREATE INDEX `room_key`  ON `sensor_data`.`locations (`room_name` ASC) ) [42000-173]
+08-26 21:32:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+  `network_id` VARCHAR(2) NOT NULL ,
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+  `locations_idlocations` INT NOT NULL ,
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+  PRIMARY KEY (`idsensors`) ,
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+  CONSTRAINT `fk_sensors_locations1`
+    FOREIGN KEY (`locations_idlocations` )
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sensors_sensorTypes1`
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:32:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSOR_DATA_SENSORS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensor_data` (
+  `idsensor_data` INT NOT NULL AUTO_INCREMENT ,
+  `time_stamp` TIMESTAMP NOT NULL ,
+  `value_1` FLOAT NULL ,
+  `value_2` FLOAT NULL ,
+  `value_3` FLOAT NULL ,
+  `value_4` INT NULL ,
+  `value_5` INT NULL ,
+  `state_1` TINYINT(1) NULL ,
+  `state_2` TINYINT(1) NULL ,
+  `sensors_idsensors` INT NOT NULL ,
+  PRIMARY KEY (`idsensor_data`) ,
+  INDEX `fk_sensor_data_sensors1` (`sensors_idsensors` ASC) ,
+  INDEX `timestamp_index` (`time_stamp` ASC) ,
+  CONSTRAINT `fk_sensor_data_sensors1`
+    FOREIGN KEY (`sensors_idsensors` )
+    REFERENCES `sensor_data`.`sensors` (`idsensors` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:32:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`locations` to sensors [42102-173]
+08-26 21:32:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensor_data` to sensors [42102-173]
+08-26 21:32:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensors` to sensors [42102-173]
+08-26 21:32:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensorTypes` to sensors [42102-173]
+08-26 21:32:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET SQL_MODE[*]=@OLD_SQL_MODE"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET SQL_MODE=@OLD_SQL_MODE [42001-173]
+08-26 21:32:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET UNIQUE_CHECKS[*]=@OLD_UNIQUE_CHECKS"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS [42001-173]
+08-26 21:33:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "INNODB"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`locations` (
+  `idlocations` INT NOT NULL AUTO_INCREMENT ,
+  `room_name` VARCHAR(45) NOT NULL DEFAULT 'Study' ,
+  PRIMARY KEY (`idlocations`) ,
+  ENGINE  InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:33:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE INDEX `room_key`  ON `sensor_data`.`locations (`room_name[*]` ASC) )"; SQL statement:
+CREATE INDEX `room_key`  ON `sensor_data`.`locations (`room_name` ASC) ) [42000-173]
+08-26 21:33:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+  `network_id` VARCHAR(2) NOT NULL ,
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+  `locations_idlocations` INT NOT NULL ,
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+  PRIMARY KEY (`idsensors`) ,
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+  CONSTRAINT `fk_sensors_locations1`
+    FOREIGN KEY (`locations_idlocations` )
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sensors_sensorTypes1`
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:33:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSOR_DATA_SENSORS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensor_data` (
+  `idsensor_data` INT NOT NULL AUTO_INCREMENT ,
+  `time_stamp` TIMESTAMP NOT NULL ,
+  `value_1` FLOAT NULL ,
+  `value_2` FLOAT NULL ,
+  `value_3` FLOAT NULL ,
+  `value_4` INT NULL ,
+  `value_5` INT NULL ,
+  `state_1` TINYINT(1) NULL ,
+  `state_2` TINYINT(1) NULL ,
+  `sensors_idsensors` INT NOT NULL ,
+  PRIMARY KEY (`idsensor_data`) ,
+  INDEX `fk_sensor_data_sensors1` (`sensors_idsensors` ASC) ,
+  INDEX `timestamp_index` (`time_stamp` ASC) ,
+  CONSTRAINT `fk_sensor_data_sensors1`
+    FOREIGN KEY (`sensors_idsensors` )
+    REFERENCES `sensor_data`.`sensors` (`idsensors` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:33:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`locations` to sensors [42102-173]
+08-26 21:33:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensor_data` to sensors [42102-173]
+08-26 21:33:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensors` to sensors [42102-173]
+08-26 21:33:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensorTypes` to sensors [42102-173]
+08-26 21:33:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET SQL_MODE[*]=@OLD_SQL_MODE"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET SQL_MODE=@OLD_SQL_MODE [42001-173]
+08-26 21:33:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET UNIQUE_CHECKS[*]=@OLD_UNIQUE_CHECKS"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS [42001-173]
+08-26 21:33:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE  TABLE IF NOT EXISTS ""SENSOR_DATA"".""LOCATIONS"" (
+  ""IDLOCATIONS"" INT NOT NULL AUTO_INCREMENT ,
+  ""ROOM_NAME"" VARCHAR(45) NOT NULL DEFAULT 'Study' ,
+  PRIMARY KEY (""IDLOCATIONS"") "; expected "INDEX, ,, )"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`locations` (
+  `idlocations` INT NOT NULL AUTO_INCREMENT ,
+  `room_name` VARCHAR(45) NOT NULL DEFAULT 'Study' ,
+  PRIMARY KEY (`idlocations`) [42001-173]
+08-26 21:33:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE INDEX `room_key`  ON `sensor_data`.`locations (`room_name[*]` ASC) )"; SQL statement:
+CREATE INDEX `room_key`  ON `sensor_data`.`locations (`room_name` ASC) ) [42000-173]
+08-26 21:33:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+  `network_id` VARCHAR(2) NOT NULL ,
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+  `locations_idlocations` INT NOT NULL ,
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+  PRIMARY KEY (`idsensors`) ,
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+  CONSTRAINT `fk_sensors_locations1`
+    FOREIGN KEY (`locations_idlocations` )
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sensors_sensorTypes1`
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:33:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSOR_DATA_SENSORS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensor_data` (
+  `idsensor_data` INT NOT NULL AUTO_INCREMENT ,
+  `time_stamp` TIMESTAMP NOT NULL ,
+  `value_1` FLOAT NULL ,
+  `value_2` FLOAT NULL ,
+  `value_3` FLOAT NULL ,
+  `value_4` INT NULL ,
+  `value_5` INT NULL ,
+  `state_1` TINYINT(1) NULL ,
+  `state_2` TINYINT(1) NULL ,
+  `sensors_idsensors` INT NOT NULL ,
+  PRIMARY KEY (`idsensor_data`) ,
+  INDEX `fk_sensor_data_sensors1` (`sensors_idsensors` ASC) ,
+  INDEX `timestamp_index` (`time_stamp` ASC) ,
+  CONSTRAINT `fk_sensor_data_sensors1`
+    FOREIGN KEY (`sensors_idsensors` )
+    REFERENCES `sensor_data`.`sensors` (`idsensors` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:33:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`locations` to sensors [42102-173]
+08-26 21:33:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensor_data` to sensors [42102-173]
+08-26 21:33:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensors` to sensors [42102-173]
+08-26 21:33:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensorTypes` to sensors [42102-173]
+08-26 21:33:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET SQL_MODE[*]=@OLD_SQL_MODE"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET SQL_MODE=@OLD_SQL_MODE [42001-173]
+08-26 21:33:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET UNIQUE_CHECKS[*]=@OLD_UNIQUE_CHECKS"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS [42001-173]
+08-26 21:36:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE  TABLE IF NOT EXISTS ""SENSOR_DATA"".""LOCATIONS"" (
+  ""IDLOCATIONS"" INT NOT NULL AUTO_INCREMENT ,
+  ""ROOM_NAME"" VARCHAR(45) NOT NULL DEFAULT 'Study' "; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`locations` (
+  `idlocations` INT NOT NULL AUTO_INCREMENT ,
+  `room_name` VARCHAR(45) NOT NULL DEFAULT 'Study' [42001-173]
+08-26 21:36:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE PRIMARY KEY ON  `sensor_data`.`locations'  (`idlocations`) ;
+
+CREATE INDEX `room_key`  ON `sensor_data`.`locations[*]' (`room_name` ASC) )"; SQL statement:
+CREATE PRIMARY KEY ON  `sensor_data`.`locations'  (`idlocations`) ;
+
+CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name` ASC) ) [42000-173]
+08-26 21:36:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+  `network_id` VARCHAR(2) NOT NULL ,
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+  `locations_idlocations` INT NOT NULL ,
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+  PRIMARY KEY (`idsensors`) ,
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+  CONSTRAINT `fk_sensors_locations1`
+    FOREIGN KEY (`locations_idlocations` )
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sensors_sensorTypes1`
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:36:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSOR_DATA_SENSORS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensor_data` (
+  `idsensor_data` INT NOT NULL AUTO_INCREMENT ,
+  `time_stamp` TIMESTAMP NOT NULL ,
+  `value_1` FLOAT NULL ,
+  `value_2` FLOAT NULL ,
+  `value_3` FLOAT NULL ,
+  `value_4` INT NULL ,
+  `value_5` INT NULL ,
+  `state_1` TINYINT(1) NULL ,
+  `state_2` TINYINT(1) NULL ,
+  `sensors_idsensors` INT NOT NULL ,
+  PRIMARY KEY (`idsensor_data`) ,
+  INDEX `fk_sensor_data_sensors1` (`sensors_idsensors` ASC) ,
+  INDEX `timestamp_index` (`time_stamp` ASC) ,
+  CONSTRAINT `fk_sensor_data_sensors1`
+    FOREIGN KEY (`sensors_idsensors` )
+    REFERENCES `sensor_data`.`sensors` (`idsensors` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:36:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`locations` to sensors [42102-173]
+08-26 21:36:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensor_data` to sensors [42102-173]
+08-26 21:36:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensors` to sensors [42102-173]
+08-26 21:36:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensorTypes` to sensors [42102-173]
+08-26 21:36:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET SQL_MODE[*]=@OLD_SQL_MODE"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET SQL_MODE=@OLD_SQL_MODE [42001-173]
+08-26 21:36:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET UNIQUE_CHECKS[*]=@OLD_UNIQUE_CHECKS"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS [42001-173]
+08-26 21:37:44 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE  TABLE IF NOT EXISTS ""SENSOR_DATA"".""LOCATIONS"" (
+  ""IDLOCATIONS"" INT NOT NULL AUTO_INCREMENT ,
+  ""ROOM_NAME"" VARCHAR(45) NOT NULL "; expected "AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`locations` (
+  `idlocations` INT NOT NULL AUTO_INCREMENT ,
+  `room_name` VARCHAR(45) NOT NULL [42001-173]
+08-26 21:37:44 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE PRIMARY KEY ON  `sensor_data`.`locations'  (`idlocations`) ;
+
+CREATE INDEX `room_key`  ON `sensor_data`.`locations[*]' (`room_name` ASC) )"; SQL statement:
+CREATE PRIMARY KEY ON  `sensor_data`.`locations'  (`idlocations`) ;
+
+CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name` ASC) ) [42000-173]
+08-26 21:37:44 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+  `network_id` VARCHAR(2) NOT NULL ,
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+  `locations_idlocations` INT NOT NULL ,
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+  PRIMARY KEY (`idsensors`) ,
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+  CONSTRAINT `fk_sensors_locations1`
+    FOREIGN KEY (`locations_idlocations` )
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sensors_sensorTypes1`
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:37:44 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSOR_DATA_SENSORS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensor_data` (
+  `idsensor_data` INT NOT NULL AUTO_INCREMENT ,
+  `time_stamp` TIMESTAMP NOT NULL ,
+  `value_1` FLOAT NULL ,
+  `value_2` FLOAT NULL ,
+  `value_3` FLOAT NULL ,
+  `value_4` INT NULL ,
+  `value_5` INT NULL ,
+  `state_1` TINYINT(1) NULL ,
+  `state_2` TINYINT(1) NULL ,
+  `sensors_idsensors` INT NOT NULL ,
+  PRIMARY KEY (`idsensor_data`) ,
+  INDEX `fk_sensor_data_sensors1` (`sensors_idsensors` ASC) ,
+  INDEX `timestamp_index` (`time_stamp` ASC) ,
+  CONSTRAINT `fk_sensor_data_sensors1`
+    FOREIGN KEY (`sensors_idsensors` )
+    REFERENCES `sensor_data`.`sensors` (`idsensors` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:37:44 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`locations` to sensors [42102-173]
+08-26 21:37:44 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensor_data` to sensors [42102-173]
+08-26 21:37:44 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensors` to sensors [42102-173]
+08-26 21:37:44 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+grant ALL on TABLE `sensor_data`.`sensorTypes` to sensors [42102-173]
+08-26 21:37:44 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET SQL_MODE[*]=@OLD_SQL_MODE"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET SQL_MODE=@OLD_SQL_MODE [42001-173]
+08-26 21:37:44 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SET UNIQUE_CHECKS[*]=@OLD_UNIQUE_CHECKS"; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, BINARY_COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, NAMES, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE, FOREIGN_KEY_CHECKS"; SQL statement:
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS [42001-173]
+08-26 21:40:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE PRIMARY KEY ON  `sensor_data`.`locations'  (`idlocations`) ;
+
+CREATE INDEX `room_key`  ON `sensor_data`.`locations[*]' (`room_name` ASC) )"; SQL statement:
+CREATE PRIMARY KEY ON  `sensor_data`.`locations'  (`idlocations`) ;
+
+CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name` ASC) ) [42000-173]
+08-26 21:40:43 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE PRIMARY KEY ON  `sensor_data`.`locations'  (`idlocations`) ;
+
+CREATE INDEX `room_key`  ON `sensor_data`.`locations[*]' (`room_name` ASC)"; SQL statement:
+CREATE PRIMARY KEY ON  `sensor_data`.`locations'  (`idlocations`) ;
+
+CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name` ASC) [42000-173]
+08-26 21:41:57 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE  TABLE IF NOT EXISTS ""SENSOR_DATA"".""LOCATIONS"" (
+  ""IDLOCATIONS"" INT NOT NULL AUTO_INCREMENT ,
+  ""ROOM_NAME"" VARCHAR(45) NOT NULL DEFAULT 'Study'),[*]
+
+PRIMARY KEY   (""IDLOCATIONS"") "; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`locations` (
+  `idlocations` INT NOT NULL AUTO_INCREMENT ,
+  `room_name` VARCHAR(45) NOT NULL DEFAULT 'Study'),
+
+PRIMARY KEY   (`idlocations`) [42000-173]
+08-26 21:41:57 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name[*]` ASC) ;"; SQL statement:
+CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name` ASC) ; [42000-173]
+08-26 21:43:15 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE PRIMARY KEY   ([*]""IDLOCATIONS"") "; expected "identifier"; SQL statement:
+CREATE PRIMARY KEY   (`idlocations`) [42001-173]
+08-26 21:43:15 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name[*]` ASC) ;"; SQL statement:
+CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name` ASC) ; [42000-173]
+08-26 21:44:22 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE PRIMARY KEY  ""locations""  ([*]""IDLOCATIONS"") "; expected "., ON"; SQL statement:
+CREATE PRIMARY KEY  "locations"  (`idlocations`) [42001-173]
+08-26 21:44:22 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name[*]` ASC) ;"; SQL statement:
+CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name` ASC) ; [42000-173]
+08-26 21:44:46 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "locations" not found; SQL statement:
+CREATE PRIMARY KEY ON  "locations"  (`idlocations`) [42102-173]
+08-26 21:44:46 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name[*]` ASC) ;"; SQL statement:
+CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name` ASC) ; [42000-173]
+08-26 21:45:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name[*]` ASC) ;"; SQL statement:
+CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name` ASC) ; [42000-173]
+08-26 21:55:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name[*]`) ;"; SQL statement:
+CREATE INDEX `room_key`  ON `sensor_data`.`locations' (`room_name`) ; [42000-173]
+08-26 21:56:00 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE INDEX `room_key`  ON `sensor_data`.[*]`locations'  (""room_name"") ;"; SQL statement:
+CREATE INDEX `room_key`  ON `sensor_data`.`locations'  ("room_name") ; [42000-173]
+08-26 21:56:42 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "locations" not found; SQL statement:
+CREATE INDEX `room_key`  ON `sensor_data`."locations"  ("room_name") [42102-173]
+08-26 21:56:58 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Schema "sensor_data" not found; SQL statement:
+CREATE INDEX `room_key`  ON "sensor_data"."locations"  ("room_name") [90079-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.getSchema(Parser.java:616)
+	at org.h2.command.Parser.getSchema(Parser.java:623)
+	at org.h2.command.Parser.parseCreate(Parser.java:3913)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 21:58:20 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOCATIONS" not found; SQL statement:
+CREATE INDEX `room_key`  ON LOCATIONS ("room_name") [42102-173]
+08-26 21:58:54 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "room_name" not found; SQL statement:
+CREATE INDEX `room_key`  ON SENSOR_DATA.LOCATIONS ("room_name") [42122-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.table.Table.getColumn(Table.java:613)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:75)
+	at org.h2.command.ddl.CreateIndex.update(CreateIndex.java:92)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:181)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 22:01:59 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+
+  `network_id` VARCHAR(2) NOT NULL ,
+
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+
+  `locations_idlocations` INT NOT NULL ,
+
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+
+  PRIMARY KEY (`idsensors`) ,
+
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+
+  CONSTRAINT `fk_sensors_locations1`
+
+    FOREIGN KEY (`locations_idlocations` )
+
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION,
+
+  CONSTRAINT `fk_sensors_sensorTypes1`
+
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION)
+
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 22:07:23 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+
+  `network_id` VARCHAR(2) NOT NULL ,
+
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+
+  `locations_idlocations` INT NOT NULL ,
+
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+
+  PRIMARY KEY (`idsensors`) ,
+
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+
+  ( CONSTRAINT `fk_sensors_locations1`
+
+    FOREIGN KEY (`locations_idlocations` )
+
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION ),
+
+  CONSTRAINT `fk_sensors_sensorTypes1`
+
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION)
+
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 22:08:45 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+
+  `network_id` VARCHAR(2) NOT NULL ,
+
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+
+  `locations_idlocations` INT NOT NULL ,
+
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+
+  PRIMARY KEY (`idsensors`) ,
+
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) ,
+
+  ( CONSTRAINT `fk_sensors_locations1`
+
+    FOREIGN KEY (`locations_idlocations` )
+
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION ),
+
+  (CONSTRAINT `fk_sensors_sensorTypes1`
+
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION))
+
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 22:09:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+
+  `network_id` VARCHAR(2) NOT NULL ,
+
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+
+  `locations_idlocations` INT NOT NULL ,
+
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+
+  PRIMARY KEY (`idsensors`) ,
+
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) 
+
+)
+
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 22:11:05 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+
+  `network_id` VARCHAR(2) NOT NULL ,
+
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+
+  `locations_idlocations` INT NOT NULL ,
+
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+
+  PRIMARY KEY (`idsensors`) ,
+
+  INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+
+  INDEX `fk_sensors_sensorTypes1` (`sensorTypes_idsensorTypes` ASC) 
+
+)
+
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 22:12:34 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "FK_SENSORS_LOCATIONS1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+
+  `network_id` VARCHAR(2) NOT NULL ,
+
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+
+  `locations_idlocations` INT NOT NULL ,
+
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+
+  PRIMARY KEY (`idsensors`) ,
+
+ INDEX `fk_sensors_locations1` (`locations_idlocations` ASC) ,
+
+
+)
+
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 22:13:36 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "fk_sensors_locations1"; SQL statement:
+CREATE  TABLE IF NOT EXISTS `sensor_data`.`sensors` (
+
+  `idsensors` INT NOT NULL AUTO_INCREMENT ,
+
+  `network_id` VARCHAR(2) NOT NULL ,
+
+  `active` TINYINT(1) NOT NULL DEFAULT TRUE ,
+
+  `locations_idlocations` INT NOT NULL ,
+
+  `sensorTypes_idsensorTypes` INT NOT NULL ,
+
+  PRIMARY KEY (`idsensors`) ,
+
+  INDEX "fk_sensors_locations1" (`locations_idlocations` ASC) ,
+
+
+)
+
+ENGINE = InnoDB [50004-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3723)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3586)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5318)
+	at org.h2.command.Parser.parseCreate(Parser.java:3873)
+	at org.h2.command.Parser.parsePrepared(Parser.java:324)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:428)
+	at org.h2.engine.Session.prepareCommand(Session.java:377)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 22:15:04 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE  INDEX ""fk_sensors_locations1"" ([*]""LOCATIONS_IDLOCATIONS"" ASC) "; expected "., ON"; SQL statement:
+CREATE  INDEX "fk_sensors_locations1" (`locations_idlocations` ASC) [42001-173]
+08-26 22:17:24 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE CONSTRAINT[*] ""FK_SENSORS_LOCATIONS1""
+
+    FOREIGN KEY (""LOCATIONS_IDLOCATIONS"" )
+
+    REFERENCES ""SENSOR_DATA"".""LOCATIONS"" (""IDLOCATIONS"" )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION, "; expected "OR, FORCE, VIEW, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, DATATYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL, GLOBAL, TEMP, TEMPORARY, TABLE, PRIMARY, UNIQUE, HASH, SPATIAL, INDEX"; SQL statement:
+CREATE CONSTRAINT `fk_sensors_locations1`
+
+    FOREIGN KEY (`locations_idlocations` )
+
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION, [42001-173]
+08-26 22:19:24 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ALTER TABLE ""SENSOR_DATA"".""SENSORS""  ADD CONSTRAINT
+
+ ""FK_SENSORS_LOCATIONS1""
+
+    FOREIGN KEY (""LOCATIONS_IDLOCATIONS"" )
+
+    REFERENCES ""SENSOR_DATA"".""LOCATIONS"" (""IDLOCATIONS"" )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION,[*] "; SQL statement:
+ALTER TABLE `sensor_data`.`sensors`  ADD CONSTRAINT
+
+ `fk_sensors_locations1`
+
+    FOREIGN KEY (`locations_idlocations` )
+
+    REFERENCES `sensor_data`.`locations` (`idlocations` )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION, [42000-173]
+08-26 22:22:35 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ALTER TABLE 'sensor_data'[*].'sensors' ADD  CONSTRAINT ""FK_SENSORS_SENSORTYPES1""
+
+    FOREIGN KEY (""SENSORTYPES_IDSENSORTYPES"" )
+
+    REFERENCES ""SENSOR_DATA"".""SENSORTYPES"" (""IDSENSORTYPES"" )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION "; expected "identifier"; SQL statement:
+ALTER TABLE 'sensor_data'.'sensors' ADD  CONSTRAINT `fk_sensors_sensorTypes1`
+
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION [42001-173]
+08-26 22:23:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ALTER TABLE  'sensor_data'[*].'sensors'  ADD  CONSTRAINT ""FK_SENSORS_SENSORTYPES1""
+
+    FOREIGN KEY (""SENSORTYPES_IDSENSORTYPES"" )
+
+    REFERENCES ""SENSOR_DATA"".""SENSORTYPES"" (""IDSENSORTYPES"" )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION "; expected "identifier"; SQL statement:
+ALTER TABLE  'sensor_data'.'sensors'  ADD  CONSTRAINT `fk_sensors_sensorTypes1`
+
+    FOREIGN KEY (`sensorTypes_idsensorTypes` )
+
+    REFERENCES `sensor_data`.`sensorTypes` (`idsensorTypes` )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION [42001-173]
+08-26 22:26:08 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE  INDEX ""FK_SENSOR_DATA_SENSORS1"" ([*]""SENSORS_IDSENSORS"" ASC) "; expected "., ON"; SQL statement:
+CREATE  INDEX `fk_sensor_data_sensors1` (`sensors_idsensors` ASC) [42001-173]
+08-26 22:26:08 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE INDEX ""TIMESTAMP_INDEX"" ([*]""TIME_STAMP"" ASC) "; expected "., ON"; SQL statement:
+CREATE INDEX `timestamp_index` (`time_stamp` ASC) [42001-173]
+08-26 22:28:04 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Index "FK_SENSOR_DATA_SENSORS1" already exists; SQL statement:
+CREATE  INDEX `fk_sensor_data_sensors1` ON `sensor_data`.`sensor_data`  (`sensors_idsensors` ASC) [42111-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.ddl.CreateIndex.update(CreateIndex.java:66)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:181)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+08-26 22:28:04 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Index "TIMESTAMP_INDEX" already exists; SQL statement:
+CREATE INDEX `timestamp_index`  ON `sensor_data`.`sensor_data`   (`time_stamp` ASC) [42111-173]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:331)
+	at org.h2.message.DbException.get(DbException.java:171)
+	at org.h2.message.DbException.get(DbException.java:148)
+	at org.h2.command.ddl.CreateIndex.update(CreateIndex.java:66)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:181)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1005)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)

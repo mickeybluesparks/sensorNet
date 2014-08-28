@@ -6,6 +6,10 @@
     <class>sensorData.Sensors</class>
     <class>sensorData.Locations</class>
     <class>sensorData.SensorData</class>
+    <class>h2_sensorData.H2_SensorData</class>
+    <class>h2_sensorData.H2_Sensors</class>
+    <class>h2_sensorData.H2_Locations</class>
+    <class>h2_sensorData.H2_Sensortypes</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sensor_data?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="2aq6HFxXNNue"/>

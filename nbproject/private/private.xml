@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/NetBeansProjects/sensorNet/src/LLAP/LLAPMessageParser.java</file>
             <file>file:/C:/NetBeansProjects/sensorNet/src/sensorNet/MainFrame.java</file>
+            <file>file:/C:/NetBeansProjects/sensorNet/src/sensorReports/reportSelection.java</file>
             <file>file:/C:/NetBeansProjects/sensorNet/test/LLAP/LLAPMessageParserTest.java</file>
         </group>
     </open-files>

@@ -135,9 +135,60 @@ public class LLAPMessageParserTest {
         
         double expVersion = 1.05;
         double version = instance.getMessageValue();
-        System.out.println("Version Number Correct?");
+        System.out.println("Version Number Check");
         assertEquals(expVersion, version, 0.01);
+        
+        System.out.println("parseMessage - Awake message checks");
+        
+        System.out.println("Parse check");
+        msg = "a--AWAKE----";
+        result = instance.parseMessage(msg.getBytes());
+        assertEquals(expResult, result);
+        System.out.println("AWAKE Message received check");
+        result = instance.deviceAwaken();
+        assertEquals(expResult, result);
+        
+        // check misspelt messages
+        
+        System.out.println("Check Misspellings");
+        
+        System.out.println("Version misspelt check");
+        System.out.println("Parse Fail");
+        msg = "a--APPER1.05";
+        expResult = false;
+        result = instance.parseMessage(msg.getBytes());
+        assertEquals(expResult, result);
+        System.out.println("Version Number NOT Received");
+        result = instance.receivedVersionNumber();
+        assertEquals(expResult, result);    // msg not received
+        
+        System.out.println("Awake misspelt check");
+        System.out.println("Parse Fail");
+        msg = "a--AWALE----";
+        expResult = false;
+        result = instance.parseMessage(msg.getBytes());
+        assertEquals(expResult, result);
+        System.out.println("AWAKE Message received FAIL");
+        result = instance.deviceAwaken();
+        assertEquals(expResult, result);    // msg not received
+        
+    }
+    
+     /**
+     * Test of parseMessage method - check for change device id message.
+     */
+    @Test
+    public void testChangeDeviceIDMessage()
+    {
+        System.out.println("parseMessage -  Confirm device ID changed");
+        String msg = "a--CHDEVIDZA";
+        LLAPMessageParser instance = new LLAPMessageParser();
+        boolean expResult = true;
+        boolean result = instance.parseMessage(msg.getBytes());
+        assertEquals(expResult, result);    // parsed ok
+        System.out.println("Parsed OK");       
         
         
     }
+    
 }

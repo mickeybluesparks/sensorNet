@@ -182,9 +182,19 @@ public class MainFrame extends javax.swing.JFrame
         jSensorNetworkMenu.add(enableSensorMenuItem);
 
         sensorStateMenuItem.setText("Set Sensor State");
+        sensorStateMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sensorStateMenuItemActionPerformed(evt);
+            }
+        });
         jSensorNetworkMenu.add(sensorStateMenuItem);
 
         reportsMenuItem.setText("Display Data");
+        reportsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportsMenuItemActionPerformed(evt);
+            }
+        });
         jSensorNetworkMenu.add(reportsMenuItem);
 
         jMenuBar1.add(jSensorNetworkMenu);
@@ -413,6 +423,14 @@ public class MainFrame extends javax.swing.JFrame
             jSensorNetworkState.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_enableSensorMenuItemActionPerformed
+
+    private void sensorStateMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sensorStateMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sensorStateMenuItemActionPerformed
+
+    private void reportsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportsMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_reportsMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

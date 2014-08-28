@@ -15,7 +15,10 @@ package LLAP;
  * LLAP messages are taken from the following list:
  *  a--APVERX.XX - application version number X.XX
  *  a--AWAKE---- - Device has just woken up in order to send data
- * 
+ *  a--BATTLOW-- - Battery powered device indicates that battery power is low
+ *  a--BATTx.xx- - Battery powered device sending current battery voltage x.xx
+ *  a--CHDEVIDBB - Device has confirmed change of ID to BB. Follow this with a 
+ *                  Reboot message to save the new device ID.
  * <p>
  * The message is first checked for length (12 bytes) and
  * the first character has to be 'a'. The message is then stripped
