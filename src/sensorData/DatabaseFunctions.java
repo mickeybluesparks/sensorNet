@@ -16,6 +16,7 @@ import javax.persistence.EntityManager;
 import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.swing.JOptionPane;
+import sensorReports.locationDataInfo;
 
 /**
  *
@@ -235,6 +236,77 @@ public class DatabaseFunctions {
         
         sensorDataController.create(dataRec);
         
+    }
+    
+     public List<locationDataInfo> getLocationDataInformation()
+    {
+        List<locationDataInfo> results = new ArrayList();
+        
+        // step 1 - get a list of locations
+        
+        List<Locations> roomList = getListOfRooms();
+        
+        // step 2 - skip those locations with no sensors attached
+        
+        for (Locations roomData : roomList )
+        {
+            if (!(roomData.getSensorsCollection() == null) && 
+                    (!roomData.getSensorsCollection().isEmpty()))
+            {
+                
+                ArrayList sensorList = (ArrayList)roomData.getSensorsCollection();
+                
+                for (int i = 0; i < sensorList.size(); i++)
+                {
+                
+                    // step 3 - create a locationDataInfo record for each sensor
+                    // attached to this room
+
+                    locationDataInfo info = new locationDataInfo();
+
+                    // step 4 - fill in the data in the locationDataInfo record
+
+                    info.setLocationName(roomData.getRoomName());
+
+                    // step 4a - get the sensor record
+                    
+                    int sensorID = ((Sensors)sensorList.get(i)).getIdsensors();                   
+                    Sensors sensor = sensorController.findSensors(sensorID);
+                    
+                    info.setSensorID(sensor.getNetworkId());
+                    info.setSensorState(sensor.getActive());
+                    
+                    // step 4b - get the sensor type
+                    
+                    int sensorTypeID = sensor.getSensorTypesidsensorTypes().getIdsensorTypes();                   
+                    Sensortypes sensorType = 
+                            sensorTypeController.findSensortypes(sensorTypeID);
+                    
+                    info.setSensorType(sensorType.getType());
+                    
+                    int dataRecordCount = sensorDataController.getSensorDataCount();
+                    info.setNumOfRecords(dataRecordCount);
+                    
+                    // step 4c - get the start date of sensor data records
+                    
+                    List<SensorData> dataList = sensorDataController.findSensorDataEntities(1, 0);
+                    info.setStartDate(dataList.get(0).getTimeStamp());
+                    
+                    // step 4d - get the end data of the sensor data records
+                    
+                    dataList = sensorDataController.findSensorDataEntities(1, dataRecordCount-1);
+                    info.setStartDate(dataList.get(0).getTimeStamp());                    
+
+                    // step 5 - add this into list
+                    
+                    results.add(info);
+                }
+            }          
+        }
+        
+        
+        
+        return results;
     }
     
 }

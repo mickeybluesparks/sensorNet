@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/NetBeansProjects/sensorNet/src/sensorNet/Location_crud.java</file>
             <file>file:/C:/NetBeansProjects/sensorNet/src/LLAP/LLAPMessageParser.java</file>
+            <file>file:/C:/NetBeansProjects/sensorNet/src/sensorData/DatabaseFunctions.java</file>
             <file>file:/C:/NetBeansProjects/sensorNet/src/sensorNet/MainFrame.java</file>
             <file>file:/C:/NetBeansProjects/sensorNet/src/sensorReports/reportSelection.java</file>
             <file>file:/C:/NetBeansProjects/sensorNet/test/LLAP/LLAPMessageParserTest.java</file>

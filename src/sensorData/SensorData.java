@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SensorData.findByValue5", query = "SELECT s FROM SensorData s WHERE s.value5 = :value5"),
     @NamedQuery(name = "SensorData.findByState1", query = "SELECT s FROM SensorData s WHERE s.state1 = :state1"),
     @NamedQuery(name = "SensorData.findByState2", query = "SELECT s FROM SensorData s WHERE s.state2 = :state2")})
+
 public class SensorData implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

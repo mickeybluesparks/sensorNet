@@ -22,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
 import sensorData.*;
 import sensorData.exceptions.IllegalOrphanException;
 import sensorData.exceptions.NonexistentEntityException;
+import sensorReports.locationDataInfo;
+import sensorReports.reportSelection;
 
 /**
  *
@@ -37,6 +39,7 @@ public class MainFrame extends javax.swing.JFrame
     private SensorDataHandler dataComms = null;
     private String[] portList;
     private boolean sensorPortOpen = false;
+    private reportSelection selectReportDialog = null;
 
     
     /**
@@ -69,6 +72,8 @@ public class MainFrame extends javax.swing.JFrame
         }
         
         sensorPort = new sensorComms();
+        
+        selectReportDialog = new reportSelection(this, true);
  
    }
 
@@ -429,7 +434,44 @@ public class MainFrame extends javax.swing.JFrame
     }//GEN-LAST:event_sensorStateMenuItemActionPerformed
 
     private void reportsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportsMenuItemActionPerformed
-        // TODO add your handling code here:
+        // Fill the table with report information
+        // Which locations have data attached
+        
+        if (database == null)
+            return;             // database has failed to open
+
+        List<locationDataInfo> locationDataList = database.getLocationDataInformation();
+        
+        if (locationDataList == null)
+            return;
+        
+        if (locationDataList.isEmpty())
+            return;
+        
+        // fill up the data table on the dialog
+        
+        JTable dataTable = selectReportDialog.getTable();
+        DefaultTableModel table = (DefaultTableModel)dataTable.getModel();
+            int rowIndex = 0;
+            
+        // add the tuples to the table for display
+
+        for (locationDataInfo dataInfo : locationDataList)
+        {
+            if (rowIndex >= table.getRowCount())
+            {
+                table.addRow(new Object[] {"....", "....", 0});
+            }
+
+
+            dataTable.setValueAt(dataInfo.getLocationName(), rowIndex, 0);
+            dataTable.setValueAt(dataInfo.getSensorType(), rowIndex, 1);
+            dataTable.setValueAt(dataInfo.getNumOfRecords(), rowIndex, 2);
+
+            rowIndex++;
+
+        }
+         
     }//GEN-LAST:event_reportsMenuItemActionPerformed
 
     /**
